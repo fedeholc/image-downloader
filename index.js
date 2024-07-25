@@ -1,4 +1,3 @@
-import axios from "axios";
 import { load } from "cheerio";
 import fs from "fs";
 import path from "path";
@@ -48,8 +47,8 @@ async function downloadImagesFromPage(pageUrl, imgMustInclude) {
     }
     visitedUrls.add(pageUrl);
 
-    // Obtener el HTML de la página
-    const { data: html } = await axios.get(pageUrl);
+    const response = await fetch(pageUrl);
+    const html = await response.text();
 
     // Cargar el HTML en cheerio
     const $ = load(html);
