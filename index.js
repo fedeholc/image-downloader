@@ -17,7 +17,8 @@ const downloadImage = async (url, outputPath) => {
 
 async function getSubPages(pageUrl, pageMustInclude) {
   try {
-    const { data: html } = await axios.get(pageUrl);
+    const response = await fetch(pageUrl);
+    const html = await response.text();
 
     // Cargar el HTML en cheerio
     const $ = load(html);
@@ -77,13 +78,9 @@ async function downloadImagesFromPage(pageUrl, imgMustInclude) {
         continue;
       }
       try {
-        // Descargar la imagen en un buffer
-        const response = await axios({
-          url: imgUrl,
-          responseType: "arraybuffer",
-        });
-
-        const buffer = Buffer.from(response.data, "binary");
+        const response = await fetch(imgUrl);
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
 
         // Obtener las dimensiones de la imagen
         const metadata = await sharp(buffer).metadata();
@@ -128,6 +125,3 @@ const pageUrl = "https://www.magnumphotos.com/photographer/robert-capa/"; // Ree
 const subpages = await getSubPages(pageUrl, "par");
 
 await getImagesFromPages(subpages, "overlay");
-
-// Llamar a la función principal
-//downloadImagesFromPage(pageUrl);
