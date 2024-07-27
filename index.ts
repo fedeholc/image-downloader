@@ -62,7 +62,7 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
         }
 
         // Filtrar imágenes por tamaño
-        if ((metadata.width > minSize || metadata.height > minSize)) {
+        if ((metadata.width > minImgSize || metadata.height > minImgSize)) {
           await fs.promises.writeFile(
             path.join(imgOutputDir, path.basename(imgUrl)),
             buffer
@@ -151,7 +151,7 @@ const pageUrl = "https://www.magnumphotos.com/photographer/elliott-erwitt/";
 const subPageMustInclude = "par";
 const imgMustInclude = "overlay";
 
-const minSize = 200;
+const minImgSize = 200;
 
 const imgOutputDir = path.join(__dirname, "images-" + pageName);
 const imgUrlsFile = path.join(imgOutputDir, "imgUrls.txt");
