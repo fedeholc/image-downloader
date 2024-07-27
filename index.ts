@@ -1,5 +1,5 @@
-import { load } from "cheerio";
 import fs from "fs";
+import { JSDOM } from "jsdom";
 import path from "path";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
@@ -9,19 +9,20 @@ async function getSubPages(pageUrl: string, subPageMustInclude: string): Promise
     const response = await fetch(pageUrl);
     const html = await response.text();
 
-    // Cargar el HTML en cheerio
-    const $ = load(html);
+    // get subpages using jsdom
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
+    const subPages = new Set<string>();
+    const links = document.querySelectorAll("a");
+    links.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href && href.includes(subPageMustInclude)) {
+        subPages.add(href);
+      }
+    });
 
-    // Buscar todas las etiquetas de enlace
-    const subPages = $("a")
-      .map((i, link) => $(link).attr("href"))
-      .get();
 
-    const filteredSubPages = new Set(
-      subPages.filter((link) => link.includes(subPageMustInclude))
-    );
-
-    return filteredSubPages;
+    return subPages;
   } catch (err) {
     console.error(`Error al procesar la página ${pageUrl}: ${err.message}`);
     return;
@@ -61,7 +62,7 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
         }
 
         // Filtrar imágenes por tamaño
-        if ((metadata.width > 100 || metadata.height > 100)) {
+        if ((metadata.width > minSize || metadata.height > minSize)) {
           await fs.promises.writeFile(
             path.join(imgOutputDir, path.basename(imgUrl)),
             buffer
@@ -88,15 +89,17 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
     const response = await fetch(pageUrl);
     const html = await response.text();
 
-    // Cargar el HTML en cheerio
-    const $ = load(html);
 
-    // Buscar todas las etiquetas de imagen
-    const imgUrls = $("img")
-      .map((i, img) => $(img).attr("src"))
-      .get();
-
-    const uniqueImgUrls = new Set(imgUrls);
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
+    const uniqueImgUrls = new Set<string>();
+    const imgs = document.querySelectorAll("img");
+    imgs.forEach((img) => {
+      const src = img.getAttribute("src");
+      if (src) {
+        uniqueImgUrls.add(src);
+      }
+    });
 
     return Array.from(uniqueImgUrls);
   } catch (err) {
@@ -136,16 +139,19 @@ async function getImages(pages: Set<string>, imgMustInclude: string) {
   await downloadImages(Array.from(imagesList), imgMustInclude);
 }
 
+//* MAIN *
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const visitedUrls = new Set();
 
-const pageName = "robert-capa";
-const pageUrl = "https://www.magnumphotos.com/photographer/robert-capa/";
-
+const pageName = "erwitt";
+const pageUrl = "https://www.magnumphotos.com/photographer/elliott-erwitt/";
 const subPageMustInclude = "par";
 const imgMustInclude = "overlay";
+
+const minSize = 200;
 
 const imgOutputDir = path.join(__dirname, "images-" + pageName);
 const imgUrlsFile = path.join(imgOutputDir, "imgUrls.txt");
