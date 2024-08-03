@@ -1,7 +1,7 @@
 import fs from "fs";
 
-const directory = "./images-erwitt";
-const linksFile = "./images-erwitt/imgUrls.txt";
+const directory = "./images-smith";
+const linksFile = "./images-smith/imgUrls.txt";
 
 //create an array with all the files in directory
 const files = fs.readdirSync(directory);

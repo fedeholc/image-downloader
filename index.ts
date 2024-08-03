@@ -146,8 +146,8 @@ const __dirname = path.dirname(__filename);
 
 const visitedUrls = new Set();
 
-const pageName = "erwitt";
-const pageUrl = "https://www.magnumphotos.com/photographer/elliott-erwitt/";
+const pageName = "smith";
+const pageUrl = "https://www.magnumphotos.com/photographer/w-eugene-smith/";
 const subPageMustInclude = "par";
 const imgMustInclude = "overlay";
 
