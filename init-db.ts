@@ -1,108 +1,56 @@
-import fs from "fs";
 import sqlite3 from "sqlite3";
-const filepath = "./images.db";
+import fs from "fs";
+import readline from "readline";
+import { AlbumFields, AuthorFields, ImageFields, TableNames, Author, Album, Image } from "./types";
+import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
 
-//const tables = { images: "images", authors: "authors", albums: "albums" };
 
-enum TableNames {
-  image = "image",
-  author = "author",
-  album = "album",
+function askQuestion(query: string) {
+  return new Promise(resolve => {
+    return rl.question(query, (value) => resolve(value));
+  });
 }
-
-enum AuthorFields {
-  id = "id",
-  name = "name",
-  description = "description",
-  image = "image",
-}
-
-type Author = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-};
-
-enum ImageFields {
-  id = "id",
-  url = "url",
-  description = "description",
-  source = "source",
-  albumId = "albumId",
-  authorId = "authorId",
-}
-
-type Image = {
-  id: number;
-  url: string;
-  description: string;
-  source: string;
-  albumId: number;
-  authorId: number;
-};
-
-enum AlbumFields {
-  id = "id",
-  nombre = "nombre",
-  description = "description",
-  image = "image",
-  dateCreated = "dateCreated",
-}
-type Album = {
-  id: number;
-  nombre: string;
-  description: string;
-  image: string;
-  dateCreated: string;
-};
 
 
 //* MAIN *
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+let filepath: string = "./images.db";
+if (fs.existsSync(filepath)) {
+  console.log("The database already exists.");
+  const answer = await askQuestion("Do you want to delete it? (y/n): ");
 
-await deleteDbFile(filepath);
+  if (answer === "y") {
+    await deleteDbFile(filepath);
+  } else {
+    const newName = await askQuestion("Enter the new path/name of the database: ") as string;
+    if (!newName) {
+      console.log("You must enter a valid path/name.");
+      process.exit(1);
+    }
+    filepath = newName;
+  }
+
+  rl.close();
+
+}
 
 //create a database if it doesn't exist
-const db = createDbConnection();
-
-deleteTable(TableNames.album, db);
-deleteTable(TableNames.author, db);
-deleteTable(TableNames.image, db);
+const db = createDbConnection(filepath);
 
 createTables(db);
 
 insertAuthor({ id: 0, name: "Eugene Smith", description: "American photojournalist", image: "smith.jpg" }, db);
 
+
+
 closeDbConnection(db);
 
 //* FUNCTIONS *
 
-function closeDbConnection(db: sqlite3.Database) {
-  db.close((error) => {
-    if (error) {
-      return console.error(error.message);
-    } else {
-      console.log("Database connection closed");
-    }
-  });
-}
 
-async function deleteDbFile(filepath: string): Promise<boolean> {
-  return new Promise((resolve, reject) => {
-    if (fs.existsSync(filepath)) {
-      fs.unlink(filepath, (error) => {
-        if (error) {
-          console.error(error.message)
-          reject(false);
-        }
-        else {
-          console.log("Database file deleted");
-          resolve(true);
-        }
-      });
-    }
-  });
-}
 
 function insertAuthor(author: Author, db: sqlite3.Database) {
 
@@ -119,16 +67,6 @@ function insertAuthor(author: Author, db: sqlite3.Database) {
 }
 
 
-function deleteTable(tableName: string, db: sqlite3.Database) {
-  db.exec(`DROP TABLE IF EXISTS ${tableName}`, (error) => {
-    if (error) {
-      return console.error(error.message);
-    }
-    else {
-      console.log("Table deleted.");
-    }
-  });
-}
 
 
 function createTables(db: sqlite3.Database) {
@@ -188,20 +126,3 @@ function createTables(db: sqlite3.Database) {
   );
 }
 
-function createDbConnection() {
-  if (fs.existsSync(filepath)) {
-    console.log("Database already exists");
-  } else {
-    console.log("Creating database");
-  }
-
-  return new sqlite3.Database(filepath, (error) => {
-    if (error) {
-      return console.error(error.message);
-    } else {
-      console.log("Connection with SQLite has been established");
-    }
-
-  });
-
-}
