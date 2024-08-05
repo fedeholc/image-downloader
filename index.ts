@@ -4,6 +4,39 @@ import path from "path";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
 
+//* MAIN *
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const visitedUrls = new Set();
+
+const pageName = "smith";
+const pageUrl = "https://www.magnumphotos.com/photographer/w-eugene-smith/";
+const subPageMustInclude = "par";
+const imgMustInclude = "overlay";
+
+const minImgSize = 200;
+
+const imgOutputDir = path.join(__dirname, "images-" + pageName);
+const imgUrlsFile = path.join(imgOutputDir, "imgUrls.txt");
+
+if (!fs.existsSync(imgOutputDir)) {
+  fs.mkdirSync(imgOutputDir);
+}
+fs.appendFileSync(imgUrlsFile, `Downloaded from ${pageUrl}\n`);
+
+const subPages = await getSubPages(pageUrl, subPageMustInclude);
+
+if (!subPages) {
+  await getImages(new Set(pageUrl), imgMustInclude);
+} else {
+  subPages.add(pageUrl);
+  await getImages(subPages, imgMustInclude);
+}
+
+//* * *
+
 async function getSubPages(pageUrl: string, subPageMustInclude: string): Promise<Set<string> | undefined> {
   try {
     const response = await fetch(pageUrl);
@@ -138,36 +171,4 @@ async function getImages(pages: Set<string>, imgMustInclude: string) {
   }
   await downloadImages(Array.from(imagesList), imgMustInclude);
 }
-
-//* MAIN *
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const visitedUrls = new Set();
-
-const pageName = "smith";
-const pageUrl = "https://www.magnumphotos.com/photographer/w-eugene-smith/";
-const subPageMustInclude = "par";
-const imgMustInclude = "overlay";
-
-const minImgSize = 200;
-
-const imgOutputDir = path.join(__dirname, "images-" + pageName);
-const imgUrlsFile = path.join(imgOutputDir, "imgUrls.txt");
-
-if (!fs.existsSync(imgOutputDir)) {
-  fs.mkdirSync(imgOutputDir);
-}
-fs.appendFileSync(imgUrlsFile, `Downloaded from ${pageUrl}\n`);
-
-const subPages = await getSubPages(pageUrl, subPageMustInclude);
-
-if (!subPages) {
-  await getImages(new Set(pageUrl), imgMustInclude);
-} else {
-  subPages.add(pageUrl);
-  await getImages(subPages, imgMustInclude);
-}
-
 
