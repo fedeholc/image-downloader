@@ -3,6 +3,31 @@ import { JSDOM } from "jsdom";
 import path from "path";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
+import { Source, Album, DownloadFilters } from "./types.ts";
+import { z } from 'zod';
+
+// Define el esquema del álbum
+const AlbumSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  image: z.string(),
+  dateCreated: z.string(),
+});
+
+const SourceSchema = z.object({
+  id: z.string(),
+  url: z.string(),
+  name: z.string(),
+});
+
+const DownloadFiltersSchema = z.object({
+  minImageWidth: z.number(),
+  minImageHeight: z.number(),
+  imgMustInclude: z.string(),
+  subPageMustInclude: z.string(),
+});
+
 
 //* MAIN *
 
@@ -11,27 +36,77 @@ const __dirname = path.dirname(__filename);
 
 const visitedUrls = new Set();
 
-const pageName = "smith";
-const pageUrl = "https://www.magnumphotos.com/photographer/w-eugene-smith/";
-const subPageMustInclude = "par";
-const imgMustInclude = "overlay";
+// read filename from argument
+if (process.argv.length < 3) {
+  console.error("Usage: node index.js <filename>");
+  process.exit(1);
+}
 
-const minImgSize = 200;
+// check if filename exists and its a json file
+const filename = process.argv[2];
+if (!fs.existsSync || !filename.endsWith(".json")) {
+  console.error("File not found or not a json file");
+  process.exit(1);
+}
 
-const imgOutputDir = path.join(__dirname, "images-" + pageName);
+// read file
+const jsonData = fs.readFileSync(filename, "utf8");
+const data = JSON.parse(jsonData);
+
+const source: Source = data.source;
+const album: Album = data.album;
+const downloadFilters: DownloadFilters = data.downloadFilters;
+
+console.log("Processing ", filename)
+console.log("Source: ", source);
+console.log("Album: ", album);
+console.log("Download filters: ", downloadFilters);
+
+try {
+  const validatedData = AlbumSchema.parse(album);
+  console.log('Validation succeeded:', validatedData);
+} catch (error) {
+  console.error('Validation failed:', error.errors);
+}
+
+try {
+  const validatedData = DownloadFiltersSchema.parse(downloadFilters);
+  console.log('Validation succeeded:', validatedData);
+} catch (error) {
+  console.error('Validation failed:', error.errors);
+}
+
+try {
+  const validatedData = SourceSchema.parse(source);
+  console.log('Validation succeeded:', validatedData);
+} catch (error) {
+  console.error('Validation failed:', error.errors);
+}
+
+//process.exit(0);
+
+const sourceId = source.id;
+const sourceUrl = source.url;
+const subPageMustInclude = downloadFilters.subPageMustInclude;
+const imgMustInclude = downloadFilters.imgMustInclude;
+
+const minImgWidth = downloadFilters.minImageWidth;
+const minImgHeight = downloadFilters.minImageHeight;
+
+const imgOutputDir = path.join(__dirname, "images-" + sourceId);
 const imgUrlsFile = path.join(imgOutputDir, "imgUrls.txt");
 
 if (!fs.existsSync(imgOutputDir)) {
   fs.mkdirSync(imgOutputDir);
 }
-fs.appendFileSync(imgUrlsFile, `Downloaded from ${pageUrl}\n`);
+fs.appendFileSync(imgUrlsFile, `Downloaded from ${sourceUrl}\n`);
 
-const subPages = await getSubPages(pageUrl, subPageMustInclude);
+const subPages = await getSubPages(sourceUrl, subPageMustInclude);
 
 if (!subPages) {
-  await getImages(new Set(pageUrl), imgMustInclude);
+  await getImages(new Set(sourceUrl), imgMustInclude);
 } else {
-  subPages.add(pageUrl);
+  subPages.add(sourceUrl);
   await getImages(subPages, imgMustInclude);
 }
 
@@ -95,7 +170,7 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
         }
 
         // Filtrar imágenes por tamaño
-        if ((metadata.width > minImgSize || metadata.height > minImgSize)) {
+        if ((metadata.width > minImgWidth || metadata.height > minImgHeight)) {
           await fs.promises.writeFile(
             path.join(imgOutputDir, path.basename(imgUrl)),
             buffer
@@ -148,7 +223,7 @@ async function getImages(pages: Set<string>, imgMustInclude: string) {
   for (let page of pages) {
     //VER Sería para resolver URLs relativas, pero no lo probé aún
     if (page && !page.startsWith("http")) {
-      const url = new URL(pageUrl);
+      const url = new URL(sourceUrl);
       page = url.origin + page;
     }
 

@@ -1,4 +1,4 @@
-export { TableNames, AuthorFields, Author, ImageFields, Image, AlbumFields, Album };
+export { Source, DownloadFilters, TableNames, AuthorFields, Author, ImageFields, Image, AlbumFields, Album };
 
 enum TableNames {
   image = "image",
@@ -40,16 +40,28 @@ type Image = {
 
 enum AlbumFields {
   id = "id",
-  nombre = "nombre",
+  name = "nombre",
   description = "description",
   image = "image",
   dateCreated = "dateCreated",
 }
 type Album = {
   id: number;
-  nombre: string;
+  name: string;
   description: string;
   image: string;
   dateCreated: string;
 };
 
+type Source = {
+  id: string;
+  url: string;
+  name: string;
+}
+
+type DownloadFilters = {
+  subPageMustInclude: string;
+  imgMustInclude: string;
+  minImageWidth: number;
+  minImageHeight: number;
+}
