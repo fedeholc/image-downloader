@@ -6,7 +6,6 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// TODO: tiene que ser un argumento la carpeta, y checkiar que este el archivo
 // read filename from argument
 if (process.argv.length < 3) {
   console.error("Usage: node filterlinks.js <directory>");

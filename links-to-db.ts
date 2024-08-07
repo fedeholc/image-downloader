@@ -7,10 +7,11 @@ import { createDbConnection, closeDbConnection } from "./utils-db";
 const filepath = "./images.db";
 const linksFile = "./images-smith/filteredLinks.json";
 
+// TODO: hay que pasarle el json del source para que tome de ahí los datos del album, y habría que ver si ponemos también un campo para el autor de las imagenes.
+
 const authorId = 0;
 const album: Album = { id: 0, name: "Smith", description: "Eugene Smith's images", image: "smith.jpg", dateCreated: "2021-10-01" };
 
-// TODO: hay que agregar el album, obtener el id para usarlo en las imagens.
 
 const db = createDbConnection(filepath);
 // read json file to an array
