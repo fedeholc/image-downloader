@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { Source, SourceSchema } from "./types/Source.ts";
 import { Album, AlbumSchema } from "./types/Album.ts";
 import { DownloadFilters, DownloadFiltersSchema } from "./types/DownloadFilters.ts";
+import { imgUrlsFile } from "./Paths.ts";
 
 //* MAIN *
 
@@ -22,7 +23,7 @@ if (process.argv.length < 3) {
 
 // check if filename exists and its a json file
 const filename = process.argv[2];
-if (!fs.existsSync || !filename.endsWith(".json")) {
+if (!fs.existsSync(filename) || !filename.endsWith(".json")) {
   console.error("File not found or not a json file");
   process.exit(1);
 }
@@ -36,13 +37,15 @@ const filters: DownloadFilters = data.downloadFilters;
 
 validateData();
 
-const imgOutputDir = path.join(__dirname, "images-" + source.id);
-const imgUrlsFile = path.join(imgOutputDir, "imgUrls.txt");
+const imgOutputDir = path.join(__dirname, "/downloads/" + source.id);
+const imgUrlsPath = path.join(imgOutputDir, imgUrlsFile);
+
+console.log(imgOutputDir);
 
 if (!fs.existsSync(imgOutputDir)) {
   fs.mkdirSync(imgOutputDir);
 }
-fs.appendFileSync(imgUrlsFile, `Downloaded from ${source.url}\n`);
+fs.appendFileSync(imgUrlsPath, `Downloaded from ${source.url}\n`);
 
 const subPages = await getSubPages(source.url, filters.subPageMustInclude);
 
@@ -83,11 +86,7 @@ function validateData() {
   } catch (error) {
     console.error('Validation failed:', error.errors);
     process.exit(1);
-
   }
-
-  //process.exit(0);
-
 }
 
 async function getSubPages(pageUrl: string, subPageMustInclude: string): Promise<Set<string> | undefined> {
@@ -153,7 +152,7 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
             path.join(imgOutputDir, path.basename(imgUrl)),
             buffer
           );
-          fs.appendFileSync(imgUrlsFile, `${imgUrl}\n`);
+          fs.appendFileSync(imgUrlsPath, `${imgUrl}\n`);
         }
       } catch (err) {
         console.error(`Error al descargar ${imgUrl}: ${err.message}`);

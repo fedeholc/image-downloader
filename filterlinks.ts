@@ -1,7 +1,11 @@
 import fs from "fs";
+import { imgUrlsFile } from "./Paths.ts";
+
+
+// TODO: tiene que ser un argumento la carpeta, y checkiar que este el archivo
 
 const directory = "./images-smith";
-const linksFile = "./images-smith/imgUrls.txt";
+const linksFile = "./images-smith/" + imgUrlsFile;
 
 //create an array with all the files in directory
 const files = fs.readdirSync(directory);
