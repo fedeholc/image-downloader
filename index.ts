@@ -3,31 +3,9 @@ import { JSDOM } from "jsdom";
 import path from "path";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
-import { Source, Album, DownloadFilters } from "./types.ts";
-import { z } from 'zod';
-
-// Define el esquema del álbum
-const AlbumSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string(),
-  image: z.string(),
-  dateCreated: z.string(),
-});
-
-const SourceSchema = z.object({
-  id: z.string(),
-  url: z.string(),
-  name: z.string(),
-});
-
-const DownloadFiltersSchema = z.object({
-  minImageWidth: z.number(),
-  minImageHeight: z.number(),
-  imgMustInclude: z.string(),
-  subPageMustInclude: z.string(),
-});
-
+import { Source, SourceSchema } from "./types/Source.ts";
+import { Album, AlbumSchema } from "./types/Album.ts";
+import { DownloadFilters, DownloadFiltersSchema } from "./types/DownloadFilters.ts";
 
 //* MAIN *
 
@@ -50,67 +28,67 @@ if (!fs.existsSync || !filename.endsWith(".json")) {
 }
 
 // read file
-const jsonData = fs.readFileSync(filename, "utf8");
-const data = JSON.parse(jsonData);
-
+console.log("Processing ", filename)
+const data = JSON.parse(fs.readFileSync(filename, "utf8"));
 const source: Source = data.source;
 const album: Album = data.album;
-const downloadFilters: DownloadFilters = data.downloadFilters;
+const filters: DownloadFilters = data.downloadFilters;
 
-console.log("Processing ", filename)
-console.log("Source: ", source);
-console.log("Album: ", album);
-console.log("Download filters: ", downloadFilters);
+validateData();
 
-try {
-  const validatedData = AlbumSchema.parse(album);
-  console.log('Validation succeeded:', validatedData);
-} catch (error) {
-  console.error('Validation failed:', error.errors);
-}
-
-try {
-  const validatedData = DownloadFiltersSchema.parse(downloadFilters);
-  console.log('Validation succeeded:', validatedData);
-} catch (error) {
-  console.error('Validation failed:', error.errors);
-}
-
-try {
-  const validatedData = SourceSchema.parse(source);
-  console.log('Validation succeeded:', validatedData);
-} catch (error) {
-  console.error('Validation failed:', error.errors);
-}
-
-//process.exit(0);
-
-const sourceId = source.id;
-const sourceUrl = source.url;
-const subPageMustInclude = downloadFilters.subPageMustInclude;
-const imgMustInclude = downloadFilters.imgMustInclude;
-
-const minImgWidth = downloadFilters.minImageWidth;
-const minImgHeight = downloadFilters.minImageHeight;
-
-const imgOutputDir = path.join(__dirname, "images-" + sourceId);
+const imgOutputDir = path.join(__dirname, "images-" + source.id);
 const imgUrlsFile = path.join(imgOutputDir, "imgUrls.txt");
 
 if (!fs.existsSync(imgOutputDir)) {
   fs.mkdirSync(imgOutputDir);
 }
-fs.appendFileSync(imgUrlsFile, `Downloaded from ${sourceUrl}\n`);
+fs.appendFileSync(imgUrlsFile, `Downloaded from ${source.url}\n`);
 
-const subPages = await getSubPages(sourceUrl, subPageMustInclude);
+const subPages = await getSubPages(source.url, filters.subPageMustInclude);
 
 if (!subPages) {
-  await getImages(new Set(sourceUrl), imgMustInclude);
+  await getImages(new Set(source.url), filters.imgMustInclude);
 } else {
-  subPages.add(sourceUrl);
-  await getImages(subPages, imgMustInclude);
+  subPages.add(source.url);
+  await getImages(subPages, filters.imgMustInclude);
 }
 
+console.log("Images downloaded successfully");
+
+process.exit(0);
+
 //* * *
+
+function validateData() {
+  try {
+    const validatedData = AlbumSchema.parse(album);
+    console.log('Validation succeeded:', validatedData);
+  } catch (error) {
+    console.error('Validation failed:', error.errors);
+    process.exit(1);
+  }
+
+  try {
+    const validatedData = DownloadFiltersSchema.parse(filters);
+    console.log('Validation succeeded:', validatedData);
+  } catch (error) {
+    console.error('Validation failed:', error.errors);
+    process.exit(1);
+
+  }
+
+  try {
+    const validatedData = SourceSchema.parse(source);
+    console.log('Validation succeeded:', validatedData);
+  } catch (error) {
+    console.error('Validation failed:', error.errors);
+    process.exit(1);
+
+  }
+
+  //process.exit(0);
+
+}
 
 async function getSubPages(pageUrl: string, subPageMustInclude: string): Promise<Set<string> | undefined> {
   try {
@@ -124,7 +102,7 @@ async function getSubPages(pageUrl: string, subPageMustInclude: string): Promise
     const links = document.querySelectorAll("a");
     links.forEach((link) => {
       const href = link.getAttribute("href");
-      if (href && href.includes(subPageMustInclude)) {
+      if (href && href.includes(filters.subPageMustInclude)) {
         subPages.add(href);
       }
     });
@@ -152,7 +130,7 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
         imgUrl = url.origin + imgUrl;
       }
 
-      if (!imgUrl.includes(imgMustInclude)) {
+      if (!imgUrl.includes(filters.imgMustInclude)) {
         continue;
       }
 
@@ -170,7 +148,7 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
         }
 
         // Filtrar imágenes por tamaño
-        if ((metadata.width > minImgWidth || metadata.height > minImgHeight)) {
+        if ((metadata.width > filters.minImageWidth || metadata.height > filters.minImageHeight)) {
           await fs.promises.writeFile(
             path.join(imgOutputDir, path.basename(imgUrl)),
             buffer
@@ -223,7 +201,7 @@ async function getImages(pages: Set<string>, imgMustInclude: string) {
   for (let page of pages) {
     //VER Sería para resolver URLs relativas, pero no lo probé aún
     if (page && !page.startsWith("http")) {
-      const url = new URL(sourceUrl);
+      const url = new URL(source.url);
       page = url.origin + page;
     }
 
@@ -244,6 +222,6 @@ async function getImages(pages: Set<string>, imgMustInclude: string) {
     console.error("No se encontraron imágenes");
     return;
   }
-  await downloadImages(Array.from(imagesList), imgMustInclude);
+  await downloadImages(Array.from(imagesList), filters.imgMustInclude);
 }
 

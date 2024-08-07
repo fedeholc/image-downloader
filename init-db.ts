@@ -1,7 +1,12 @@
 import sqlite3 from "sqlite3";
 import fs from "fs";
 import readline from "readline";
-import { AlbumFields, AuthorFields, ImageFields, TableNames, Author, Album, Image } from "./types";
+import { AlbumFields } from "./types/Album";
+import { AuthorFields } from "./types/Author";
+import { ImageFields } from "./types/Image";
+import { TableNames } from "./types/Tables";
+import { Author } from "./types/Author";
+
 import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
 
 
@@ -109,7 +114,7 @@ function createTables(db: sqlite3.Database) {
   db.exec(
     `CREATE TABLE IF NOT EXISTS ${TableNames.album} (
     ${AlbumFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
-    ${AlbumFields.nombre} TEXT NOT NULL,
+    ${AlbumFields.name} TEXT NOT NULL,
     ${AlbumFields.description} TEXT,
     ${AlbumFields.image} TEXT,
     ${AlbumFields.dateCreated} TEXT)`,

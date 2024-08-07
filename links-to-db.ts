@@ -1,12 +1,14 @@
 import fs from "fs";
 import sqlite3 from "sqlite3";
-import { AlbumFields, AuthorFields, ImageFields, TableNames, Author, Album, Image } from "./types";
+import { Album, } from "./types/Album";
+import { Image, ImageFields } from "./types/Image";
+import { TableNames } from "./types/Tables";
 import { createDbConnection, closeDbConnection } from "./utils-db";
 const filepath = "./images.db";
 const linksFile = "./images-smith/filteredLinks.json";
 
 const authorId = 0;
-const album: Album = { id: 0, nombre: "Smith", description: "Eugene Smith's images", image: "smith.jpg", dateCreated: "2021-10-01" };
+const album: Album = { id: 0, name: "Smith", description: "Eugene Smith's images", image: "smith.jpg", dateCreated: "2021-10-01" };
 
 // TODO: hay que agregar el album, obtener el id para usarlo en las imagens.
 
