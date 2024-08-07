@@ -47,33 +47,13 @@ const db = createDbConnection(filepath);
 
 createTables(db);
 
-insertAuthor({ id: 0, name: "Eugene Smith", description: "American photojournalist", image: "smith.jpg" }, db);
-
 
 
 closeDbConnection(db);
 
 //* FUNCTIONS *
 
-
-function insertAuthor(author: Author, db: sqlite3.Database) {
-
-  db.run(
-    `INSERT INTO ${TableNames.author} (${AuthorFields.name}, ${AuthorFields.description}, ${AuthorFields.image}) VALUES (?, ?, ?)`,
-    [author.name, author.description, author.image],
-    function (error) {
-      if (error) {
-        console.error(error.message);
-      }
-      console.log(`Inserted a row with the ID: ${this.lastID}`);
-    }
-  );
-}
-
-
-
-
-function createTables(db: sqlite3.Database) {
+function createTablesWithIntegerIds(db: sqlite3.Database) {
 
   db.exec(
     `CREATE TABLE IF NOT EXISTS ${TableNames.image} (
@@ -114,6 +94,64 @@ function createTables(db: sqlite3.Database) {
   db.exec(
     `CREATE TABLE IF NOT EXISTS ${TableNames.album} (
     ${AlbumFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
+    ${AlbumFields.name} TEXT NOT NULL,
+    ${AlbumFields.description} TEXT,
+    ${AlbumFields.image} TEXT,
+    ${AlbumFields.dateCreated} TEXT)`,
+
+    (error) => {
+      if (error) {
+        return console.error(error.message);
+      }
+      else {
+        console.log("Table created.");
+      }
+    }
+  );
+}
+
+
+function createTables(db: sqlite3.Database) {
+
+  db.exec(
+    `CREATE TABLE IF NOT EXISTS ${TableNames.image} (
+    ${ImageFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
+    ${ImageFields.url} TEXT NOT NULL,
+    ${ImageFields.description} TEXT,
+    ${ImageFields.source} TEXT,
+    ${ImageFields.albumId} TEXT,
+    ${ImageFields.authorId} TEXT,
+    FOREIGN KEY(${ImageFields.authorId}) REFERENCES ${TableNames.author}(id),
+    FOREIGN KEY(${ImageFields.albumId}) REFERENCES ${TableNames.album}(id)
+  )`,
+    (error) => {
+      if (error) {
+        return console.error(error.message);
+      } else {
+        console.log("Table created.");
+      }
+    }
+  );
+
+  db.exec(
+    `CREATE TABLE IF NOT EXISTS ${TableNames.author} (
+    ${AuthorFields.id} TEXT PRIMARY KEY,
+    ${AuthorFields.name} TEXT NOT NULL,
+    ${AuthorFields.description} TEXT,
+    ${AuthorFields.image} TEXT)`,
+    (error) => {
+      if (error) {
+        return console.error(error.message);
+      }
+      else {
+        console.log("Table created.");
+      }
+    }
+  );
+
+  db.exec(
+    `CREATE TABLE IF NOT EXISTS ${TableNames.album} (
+    ${AlbumFields.id} TEXT PRIMARY KEY,
     ${AlbumFields.name} TEXT NOT NULL,
     ${AlbumFields.description} TEXT,
     ${AlbumFields.image} TEXT,

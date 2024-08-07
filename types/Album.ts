@@ -20,7 +20,7 @@ enum AlbumFields {
 }
 
 type Album = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   image: string;

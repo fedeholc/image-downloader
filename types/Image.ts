@@ -14,6 +14,6 @@ type Image = {
   url: string;
   description: string;
   source: string;
-  albumId: number;
-  authorId: number;
+  albumId: string;
+  authorId: string;
 };
