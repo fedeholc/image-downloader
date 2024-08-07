@@ -1,9 +1,6 @@
 export { AuthorFields, Author, AuthorSchema };
-
-
 import { z } from 'zod';
 
-// Define el esquema del álbum
 const AuthorSchema = z.object({
   id: z.string(),
   name: z.string(),

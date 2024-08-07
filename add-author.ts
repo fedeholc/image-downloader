@@ -1,12 +1,8 @@
 import sqlite3 from "sqlite3";
 import fs from "fs";
 import { fileURLToPath } from "url";
-import path from "path";
-import readline from "readline";
-import { AlbumFields } from "./types/Album";
 import { AuthorSchema } from "./types/Author";
 import { AuthorFields } from "./types/Author";
-import { ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
 import { Author } from "./types/Author";
 

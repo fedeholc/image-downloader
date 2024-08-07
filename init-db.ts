@@ -5,7 +5,6 @@ import { AlbumFields } from "./types/Album";
 import { AuthorFields } from "./types/Author";
 import { ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
-import { Author } from "./types/Author";
 
 import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
 

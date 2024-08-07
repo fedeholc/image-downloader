@@ -2,7 +2,6 @@ export { AlbumFields, Album, AlbumSchema };
 
 import { z } from 'zod';
 
-// Define el esquema del álbum
 const AlbumSchema = z.object({
   id: z.string(),
   name: z.string(),
