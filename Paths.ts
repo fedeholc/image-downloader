@@ -1,1 +1,1 @@
-export const imgUrlsFile= "images-urls.txt";
+export const imgUrlsFile = "images-urls.json";

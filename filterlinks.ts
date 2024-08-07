@@ -1,24 +1,48 @@
 import fs from "fs";
 import { imgUrlsFile } from "./Paths.ts";
+import { fileURLToPath } from "url";
+import path from "path";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // TODO: tiene que ser un argumento la carpeta, y checkiar que este el archivo
+// read filename from argument
+if (process.argv.length < 3) {
+  console.error("Usage: node filterlinks.js <directory>");
+  process.exit(1);
+}
 
-const directory = "./images-smith";
-const linksFile = "./images-smith/" + imgUrlsFile;
+// check if filename exists and its a json file
+const directory = path.join(__dirname, process.argv[2]);
+const linksFile = path.join(directory, imgUrlsFile);
+console.log(linksFile);
+if (!fs.existsSync(linksFile)) {
+  console.error("File with links not found");
+  process.exit(1);
+}
 
 //create an array with all the files in directory
-const files = fs.readdirSync(directory);
-console.log(files);
+const imagesFiles = fs.readdirSync(directory);
 
-//read linksFile line by line and check if the line string contains any of the strings in files
+//filter only files with extensions jpg, jpeg, png, webp
+const files = imagesFiles.filter((file) =>
+  file.match(/\.(jpg|jpeg|png|webp)$/)
+);
 
-const links = fs.readFileSync(linksFile, "utf-8").split("\n");
+if (files.length === 0) {
+  console.error("No image files (jpg, jpeg, png, webp) found in directory");
+  process.exit(1);
+}
+
+
+
+const links = JSON.parse(fs.readFileSync(linksFile, "utf-8"));
 console.log(links);
 
 let filteredLinks = new Set();
 for (let link of links) {
-  for (let file of files) {
+  for (let file of imagesFiles) {
     //check if last part of link (a filename) is in the file string
     if (link.includes(file)) {
       console.log(link, file);
@@ -29,6 +53,7 @@ for (let link of links) {
 
 console.log(filteredLinks);
 
+//TODO: usar path.join
 //write filteredLinks to a json file
 fs.writeFileSync(
   directory + "/filteredLinks.json",

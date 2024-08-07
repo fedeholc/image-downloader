@@ -43,20 +43,28 @@ const imgUrlsPath = path.join(imgOutputDir, imgUrlsFile);
 console.log(imgOutputDir);
 
 if (!fs.existsSync(imgOutputDir)) {
+  fs.mkdirSync(path.join(__dirname, "/downloads/"))
   fs.mkdirSync(imgOutputDir);
 }
-fs.appendFileSync(imgUrlsPath, `Downloaded from ${source.url}\n`);
+//fs.appendFileSync(imgUrlsPath, `Downloaded from ${source.url}\n`);
 
 const subPages = await getSubPages(source.url, filters.subPageMustInclude);
 
+let downloadedLinks: string[] | undefined = [];
 if (!subPages) {
-  await getImages(new Set(source.url), filters.imgMustInclude);
+  downloadedLinks = await getImages(new Set(source.url), filters.imgMustInclude);
 } else {
   subPages.add(source.url);
-  await getImages(subPages, filters.imgMustInclude);
+  downloadedLinks = await getImages(subPages, filters.imgMustInclude);
 }
 
-console.log("Images downloaded successfully");
+if (!downloadedLinks) {
+  console.error("No images downloaded");
+  process.exit(1);
+} else {
+  console.log("Images downloaded successfully");
+  fs.appendFileSync(imgUrlsPath, JSON.stringify([...downloadedLinks], null, 2));
+}
 
 process.exit(0);
 
@@ -114,7 +122,8 @@ async function getSubPages(pageUrl: string, subPageMustInclude: string): Promise
   }
 }
 
-async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
+async function downloadImages(imagesUrls: string[], imgMustInclude: string): Promise<string[]> {
+  let downloadedImages: string[] = [];
   try {
     if (!fs.existsSync(imgOutputDir)) {
       fs.mkdirSync(imgOutputDir);
@@ -152,7 +161,8 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
             path.join(imgOutputDir, path.basename(imgUrl)),
             buffer
           );
-          fs.appendFileSync(imgUrlsPath, `${imgUrl}\n`);
+          //fs.appendFileSync(imgUrlsPath, `${imgUrl}\n`);
+          downloadedImages.push(imgUrl);
         }
       } catch (err) {
         console.error(`Error al descargar ${imgUrl}: ${err.message}`);
@@ -161,6 +171,7 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string) {
   } catch (err) {
     console.error(`Error al procesar la página ${imagesUrls}: ${err.message}`);
   }
+  return downloadedImages;
 }
 
 async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
@@ -192,7 +203,7 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
   }
 }
 
-async function getImages(pages: Set<string>, imgMustInclude: string) {
+async function getImages(pages: Set<string>, imgMustInclude: string): Promise<string[] | undefined> {
   if (!pages) {
     return;
   }
@@ -221,6 +232,7 @@ async function getImages(pages: Set<string>, imgMustInclude: string) {
     console.error("No se encontraron imágenes");
     return;
   }
-  await downloadImages(Array.from(imagesList), filters.imgMustInclude);
+  let downloadedLinks = await downloadImages(Array.from(imagesList), filters.imgMustInclude);
+  return downloadedLinks;
 }
 
