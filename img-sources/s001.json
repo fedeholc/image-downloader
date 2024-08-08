@@ -16,5 +16,6 @@
     "imgMustInclude": "overlay",
     "minImageWidth": 200,
     "minImageHeight": 200
-  }
+  },
+  "authorId": "smith01"
 }

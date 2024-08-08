@@ -1,6 +1,7 @@
 import fs from "fs";
-import { imgUrlsFile } from "./Paths.ts";
+import { imgUrlsFile, imgFilteredUrlsFile } from "./Paths.ts";
 import { fileURLToPath } from "url";
+
 import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -55,7 +56,7 @@ console.log(filteredLinks);
 //TODO: usar path.join
 //write filteredLinks to a json file
 fs.writeFileSync(
-  directory + "/filteredLinks.json",
+  directory + "/" + imgFilteredUrlsFile,
   JSON.stringify([...filteredLinks], null, 2)
 );
 
