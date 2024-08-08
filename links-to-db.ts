@@ -1,6 +1,6 @@
 import fs from "fs";
 import sqlite3 from "sqlite3";
-import { Album, } from "./types/Album";
+import { Album, AlbumSchema, AlbumFields } from "./types/Album";
 import { Image, ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
 import { imgFilteredUrlsFile } from "./Paths.ts";
@@ -46,9 +46,17 @@ if (!data.authorId) {
 }
 const authorId: string = data.authorId;
 
-//TODO: validar schema de album
-//TODO: guardar en tabla album
 const album: Album = data.album;
+try {
+  const validatedData = AlbumSchema.parse(album);
+  console.log('Validation succeeded:', validatedData);
+} catch (error) {
+  console.error('Validation failed:', error.errors);
+  process.exit(1);
+}
+
+
+insertAlbum(album, db);
 
 // read json file to an array
 const links = JSON.parse(fs.readFileSync(linksFile, "utf-8"));
@@ -70,7 +78,23 @@ console.log("Images added to database");
 
 closeDbConnection(db);
 
+//* * * 
 
+function insertAlbum(album: Album, db: sqlite3.Database) {
+
+  db.run(
+    `INSERT INTO ${TableNames.album} (${AlbumFields.id},${AlbumFields.name},${AlbumFields.description},${AlbumFields.image}, ${AlbumFields.dateCreated}) VALUES (?,?,?,?,?)`,
+    [album.id, album.name, album.description, album.image, album.dateCreated],
+    function (error) {
+      if (error) {
+        console.error(error.message);
+      } else {
+        console.log(`Inserted a row`);
+
+      }
+    }
+  );
+}
 
 function insertImage(image: Image, db: sqlite3.Database) {
 
