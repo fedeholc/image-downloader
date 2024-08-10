@@ -5,6 +5,7 @@ import { z } from "zod";
 type DownloadFilters = {
   subPageMustInclude: string;
   imgMustInclude: string;
+  imgExclude: string[];
   minImageWidth: number;
   minImageHeight: number;
 }

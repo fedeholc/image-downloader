@@ -1,3 +1,7 @@
+//TODOS:
+// cambiar para no tener que pasarle directorio (y que busque archivo de links ahí), sino pasarle directamente el path al archivo
+// por otra parte no tiene sentido pasarle el archivo de source con los datos del album por separado
+// en el mismo archivo de source deberíamos agregar los links
 import fs from "fs";
 import sqlite3 from "sqlite3";
 import { Album, AlbumSchema, AlbumFields } from "./types/Album";
@@ -8,30 +12,25 @@ import path from "path";
 
 import { fileURLToPath } from "url";
 import { createDbConnection, closeDbConnection } from "./utils-db";
+import { Source, SourceFields } from "./types/Source.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // read filename from argument
-if (process.argv.length < 4) {
-  console.error("Usage: node links-to-db.ts <directory> <album source file>");
+if (process.argv.length < 3) {
+  console.error("Usage: node links-to-db.ts <album source file>");
   process.exit(1);
 }
 
-// check if filename exists and its a json file
-const linksFileDir = path.join(__dirname, process.argv[2]);
-const linksFile = path.join(linksFileDir, imgFilteredUrlsFile);
-console.log(linksFile);
-if (!fs.existsSync(linksFile)) {
-  console.error("File with links not found");
-  process.exit(1);
-}
 
-const sourceFile = path.join(__dirname, process.argv[3]);
+
+const sourceFile = path.join(__dirname, process.argv[2]);
 if (!fs.existsSync(sourceFile)) {
   console.error("File with source not found");
   process.exit(1);
 }
+
 
 const filepath = "./images.db";
 const db = createDbConnection(filepath);
@@ -45,7 +44,7 @@ if (!data.authorId) {
   data.authorId = ""; // igual debería venir así en el archivo
 }
 const authorId: string = data.authorId;
-
+const source: Source = data.source;
 const album: Album = data.album;
 try {
   const validatedData = AlbumSchema.parse(album);
@@ -57,18 +56,17 @@ try {
 
 
 insertAlbum(album, db);
+insertSource(source, db);
 
 // read json file to an array
-const links = JSON.parse(fs.readFileSync(linksFile, "utf-8"));
+const links = data.imgLinks;
 if (links.length === 0) {
   console.error("No links found in file");
   process.exit(1);
 }
 
-//TODO: hay que tomar los datos de source y descripción
-//TODO: pero ojo, va a haber que crear una tabla de source, con un id, como con album.
 links.forEach((link: string) => {
-  const image: Image = { id: 0, url: link, description: "imagen de smith", source: "smith", albumId: album.id, authorId: authorId };
+  const image: Image = { id: 0, url: link, description: "", source: source.id, albumId: album.id, authorId: authorId };
   console.log("Adding image: ", image);
 
   // insert image into database
@@ -87,6 +85,22 @@ function insertAlbum(album: Album, db: sqlite3.Database) {
   db.run(
     `INSERT INTO ${TableNames.album} (${AlbumFields.id},${AlbumFields.name},${AlbumFields.description},${AlbumFields.image}, ${AlbumFields.dateCreated}) VALUES (?,?,?,?,?)`,
     [album.id, album.name, album.description, album.image, album.dateCreated],
+    function (error) {
+      if (error) {
+        console.error(error.message);
+      } else {
+        console.log(`Inserted a row`);
+
+      }
+    }
+  );
+}
+
+function insertSource(source: Source, db: sqlite3.Database) {
+
+  db.run(
+    `INSERT INTO ${TableNames.source} (${SourceFields.id},${SourceFields.name},${SourceFields.url}) VALUES (?,?,?)`,
+    [source.id, source.name, source.url],
     function (error) {
       if (error) {
         console.error(error.message);

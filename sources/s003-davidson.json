@@ -1,0 +1,56 @@
+{
+  "source": {
+    "id": "s003-davidson",
+    "url": "https://www.magnumphotos.com/arts-culture/society-arts-culture/bruce-davidson-east-100th-street/",
+    "name": "Magnum Photos"
+  },
+  "album": {
+    "id": "a003-davidson",
+    "name": "Bruce Davidson - HarlemEast 100th Street: Harlem, 50 Years On - Magnum Photos",
+    "description": "Following the end of Harlem Week—a month-long celebration of the neighborhood’s unique flavour—Davidson’s seminal work on East 100th Street is remembered",
+    "image": "",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "attachment",
+    "imgMustInclude": "overlay",
+    "imgExclude": [],
+    "minImageWidth": 200,
+    "minImageHeight": 200
+  },
+  "authorId": "davidson01",
+  "imgLinks": [
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6071-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc28015-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6094-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6355-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6198-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc12453-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6038-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6029-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6093-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6058-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6099-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6185-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6259-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6079-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6254-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6069-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6065-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6057-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/par101760-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6249-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6040-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6070-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6095-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6266-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6206-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6031-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6237-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6209-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6089-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6074-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6253-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2018/08/cortex/nyc6090-overlay.jpg"
+  ]
+}

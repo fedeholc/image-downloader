@@ -1,0 +1,59 @@
+{
+  "source": {
+    "id": "s002-davidson",
+    "url": "https://www.magnumphotos.com/newsroom/society/bruce-davidson-selma-marches/",
+    "name": "Magnum Photos"
+  },
+  "album": {
+    "id": "a002-davidson",
+    "name": "Bruce Davidson - Selma - Magnum Photos",
+    "description": "Bruce Davidson's lasting documentation of the historic Selma Marches, a seminal turning point in the American Civil Rights movement",
+    "image": "",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "attachment",
+    "imgMustInclude": "overlay",
+    "imgExclude": [],
+    "minImageWidth": 200,
+    "minImageHeight": 200
+  },
+  "authorId": "davidson01",
+  "imgLinks": [
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12850-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12849-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12843-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12862-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12846-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc27953-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12861-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc17801-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc13047-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc75605-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc27954-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc28265-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc78933-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12855-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12847-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc75601-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc101425-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/par167579-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc32305-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12848-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12863-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc78932-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc75606-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc27949-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc23285-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc32280-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc27952-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc23056-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc75604-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12851-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12853-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12859-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12856-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc33205-overlay.jpg",
+    "https://content.magnumphotos.com/wp-content/uploads/2016/07/cortex/nyc12858-overlay.jpg"
+  ]
+}

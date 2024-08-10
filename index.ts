@@ -28,9 +28,22 @@ if (!fs.existsSync(filename) || !filename.endsWith(".json")) {
   process.exit(1);
 }
 
+let downloadFiles = true;
+if (process.argv[3] === "--no-downloads") {
+  downloadFiles = false;
+}
+
+// copy file to a backup folder, add date and time to filename
+const backupDir = path.join(path.dirname(filename), "/backup/");
+if (!fs.existsSync(backupDir)) {
+  fs.mkdirSync(backupDir);
+}
+const backupFilename = path.join(backupDir, path.basename(filename, ".json") + "-" + new Date().toISOString() + ".json");
+fs.copyFileSync(filename, backupFilename);
+
 // read file
 console.log("Processing ", filename)
-const data = JSON.parse(fs.readFileSync(filename, "utf8"));
+let data = JSON.parse(fs.readFileSync(filename, "utf8"));
 const source: Source = data.source;
 const album: Album = data.album;
 const filters: DownloadFilters = data.downloadFilters;
@@ -49,7 +62,6 @@ if (!fs.existsSync(imgOutputDir)) {
   }
   fs.mkdirSync(imgOutputDir);
 }
-//fs.appendFileSync(imgUrlsPath, `Downloaded from ${source.url}\n`);
 
 const subPages = await getSubPages(source.url, filters.subPageMustInclude);
 
@@ -66,7 +78,10 @@ if (!downloadedLinks) {
   process.exit(1);
 } else {
   console.log("Images downloaded successfully");
-  fs.appendFileSync(imgUrlsPath, JSON.stringify([...downloadedLinks], null, 2));
+  data.imgLinks = downloadedLinks;
+  //fs.appendFileSync(imgUrlsPath, JSON.stringify([...downloadedLinks], null, 2));
+  fs.writeFileSync(filename, JSON.stringify(data, null, 2));
+
 }
 
 process.exit(0);
@@ -144,6 +159,15 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string): Pro
       if (!imgUrl.includes(filters.imgMustInclude)) {
         continue;
       }
+      let exclude = false;
+      if (filters.imgExclude.length > 0) {
+        filters.imgExclude.forEach((item) => {
+          if (imgUrl.includes(item)) {
+            exclude = true;
+          }
+        })
+      }
+      if (exclude) continue;
 
       try {
         const response = await fetch(imgUrl);
@@ -160,11 +184,13 @@ async function downloadImages(imagesUrls: string[], imgMustInclude: string): Pro
 
         // Filtrar imágenes por tamaño
         if ((metadata.width > filters.minImageWidth || metadata.height > filters.minImageHeight)) {
-          await fs.promises.writeFile(
-            path.join(imgOutputDir, path.basename(imgUrl)),
-            buffer
-          );
-          //fs.appendFileSync(imgUrlsPath, `${imgUrl}\n`);
+
+          if (downloadFiles) {
+            await fs.promises.writeFile(
+              path.join(imgOutputDir, path.basename(imgUrl)),
+              buffer
+            );
+          }
           downloadedImages.push(imgUrl);
         }
       } catch (err) {

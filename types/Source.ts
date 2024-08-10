@@ -1,4 +1,4 @@
-export { Source, SourceSchema };
+export { Source, SourceSchema, SourceFields };
 
 import { z } from "zod";
 type Source = {
@@ -12,4 +12,8 @@ const SourceSchema = z.object({
   url: z.string(),
   name: z.string(),
 });
-
+enum SourceFields {
+  id = "id",
+  name = "name",
+  url = "url"
+}

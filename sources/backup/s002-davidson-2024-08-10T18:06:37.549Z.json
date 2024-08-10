@@ -5,7 +5,7 @@
     "name": "Magnum Photos"
   },
   "album": {
-    "id": "s002-davidson",
+    "id": "a002-davidson",
     "name": "Bruce Davidson - Selma - Magnum Photos",
     "description": "Bruce Davidson's lasting documentation of the historic Selma Marches, a seminal turning point in the American Civil Rights movement",
     "image": "",
@@ -14,6 +14,7 @@
   "downloadFilters": {
     "subPageMustInclude": "attachment",
     "imgMustInclude": "overlay",
+    "imgExclude": [],
     "minImageWidth": 200,
     "minImageHeight": 200
   },

@@ -5,6 +5,7 @@ import { AlbumFields } from "./types/Album";
 import { AuthorFields } from "./types/Author";
 import { ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
+import { SourceFields } from "./types/Source"
 
 import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
 
@@ -155,6 +156,22 @@ function createTables(db: sqlite3.Database) {
     ${AlbumFields.description} TEXT,
     ${AlbumFields.image} TEXT,
     ${AlbumFields.dateCreated} TEXT)`,
+
+    (error) => {
+      if (error) {
+        return console.error(error.message);
+      }
+      else {
+        console.log("Table created.");
+      }
+    }
+  );
+
+  db.exec(
+    `CREATE TABLE IF NOT EXISTS ${TableNames.source} (
+    ${SourceFields.id} TEXT PRIMARY KEY,
+    ${SourceFields.name} TEXT NOT NULL,
+    ${SourceFields.url} TEXT)`,
 
     (error) => {
       if (error) {
