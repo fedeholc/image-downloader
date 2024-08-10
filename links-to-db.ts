@@ -65,6 +65,8 @@ if (links.length === 0) {
   process.exit(1);
 }
 
+//TODO: hay que tomar los datos de source y descripción
+//TODO: pero ojo, va a haber que crear una tabla de source, con un id, como con album.
 links.forEach((link: string) => {
   const image: Image = { id: 0, url: link, description: "imagen de smith", source: "smith", albumId: album.id, authorId: authorId };
   console.log("Adding image: ", image);

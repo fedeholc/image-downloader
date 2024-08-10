@@ -1,0 +1,21 @@
+{
+  "source": {
+    "id": "s002-davidson",
+    "url": "https://www.magnumphotos.com/newsroom/society/bruce-davidson-selma-marches/",
+    "name": "Magnum Photos"
+  },
+  "album": {
+    "id": "s002-davidson",
+    "name": "Bruce Davidson - Selma - Magnum Photos",
+    "description": "Bruce Davidson's lasting documentation of the historic Selma Marches, a seminal turning point in the American Civil Rights movement",
+    "image": "",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "attachment",
+    "imgMustInclude": "overlay",
+    "minImageWidth": 200,
+    "minImageHeight": 200
+  },
+  "authorId": "davidson01"
+}

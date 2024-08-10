@@ -1,0 +1,21 @@
+{
+  "source": {
+    "id": "s003-davidson",
+    "url": "https://www.magnumphotos.com/arts-culture/society-arts-culture/bruce-davidson-east-100th-street/",
+    "name": "Magnum Photos"
+  },
+  "album": {
+    "id": "s003-davidson",
+    "name": "Bruce Davidson - HarlemEast 100th Street: Harlem, 50 Years On - Magnum Photos",
+    "description": "Following the end of Harlem Week—a month-long celebration of the neighborhood’s unique flavour—Davidson’s seminal work on East 100th Street is remembered",
+    "image": "",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "attachment",
+    "imgMustInclude": "overlay",
+    "minImageWidth": 200,
+    "minImageHeight": 200
+  },
+  "authorId": "davidson01"
+}

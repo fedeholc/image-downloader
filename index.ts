@@ -43,7 +43,10 @@ const imgUrlsPath = path.join(imgOutputDir, imgUrlsFile);
 console.log(imgOutputDir);
 
 if (!fs.existsSync(imgOutputDir)) {
-  fs.mkdirSync(path.join(__dirname, "/downloads/"))
+  //if not exist dir
+  if (!fs.existsSync(path.join(__dirname, "/downloads/"))) {
+    fs.mkdirSync(path.join(__dirname, "/downloads/"))
+  }
   fs.mkdirSync(imgOutputDir);
 }
 //fs.appendFileSync(imgUrlsPath, `Downloaded from ${source.url}\n`);
