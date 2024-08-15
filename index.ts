@@ -6,7 +6,6 @@ import { fileURLToPath } from "url";
 import { Source, SourceSchema } from "./types/Source.ts";
 import { Album, AlbumSchema } from "./types/Album.ts";
 import { DownloadFilters, DownloadFiltersSchema } from "./types/DownloadFilters.ts";
-import { imgUrlsFile } from "./Paths.ts";
 
 //* MAIN *
 
@@ -51,7 +50,6 @@ const filters: DownloadFilters = data.downloadFilters;
 validateData();
 
 const imgOutputDir = path.join(__dirname, "/downloads/" + source.id);
-const imgUrlsPath = path.join(imgOutputDir, imgUrlsFile);
 
 console.log(imgOutputDir);
 
