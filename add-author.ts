@@ -52,7 +52,6 @@ closeDbConnection(db);
 
 //* FUNCTIONS *
 
-
 function insertAuthor(author: Author, db: sqlite3.Database) {
 
   db.run(

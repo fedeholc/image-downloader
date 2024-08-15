@@ -7,7 +7,6 @@ import sqlite3 from "sqlite3";
 import { Album, AlbumSchema, AlbumFields } from "./types/Album";
 import { Image, ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
-import { imgFilteredUrlsFile } from "./Paths.ts";
 import path from "path";
 
 import { fileURLToPath } from "url";
