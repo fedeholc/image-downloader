@@ -82,9 +82,13 @@ if (!downloadedLinks) {
   let images: Image[] = [];
   downloadedLinks.forEach((link, index) => {
 
-    //TODO: acá hay que hacer que se agreguen ceros por delante (segun el total de imagenes de downloadLinks)
+    //TODO: acá hay que hacer que se agreguen ceros por delante (segun el total de imagenes de downloadLinks), creo que funciona, testearlo.
 
-    images.push({ id: album.id + (index + 1).toString(), url: link, description: "", source: source.id, albumId: album.id, authorId: data.authorId });
+    let zerosNeeded = downloadedLinks.length.toString().length - (index + 1).toString().length;
+    const zeros = '0'.repeat(zerosNeeded > 0 ? zerosNeeded : 0);
+
+
+    images.push({ id: album.id + zeros + (index + 1).toString(), url: link, description: "", source: source.id, albumId: album.id, authorId: data.authorId });
   });
   data.images = images;
   fs.writeFileSync(filename, JSON.stringify(data, null, 2));
