@@ -74,5 +74,415 @@
     "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78404-overlay.jpg",
     "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par111401-overlay.jpg",
     "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par58338-overlay.jpg"
+  ],
+  "images": [
+    {
+      "id": "a001-smith1",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46057-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith2",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46287-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith3",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par62223-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith4",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46058-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith5",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46062-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith6",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46293-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith7",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46066-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith8",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46069-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith9",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par58311-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith10",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78727-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith11",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par108032-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith12",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par151745-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith13",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78361-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith14",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par58345-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith15",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78515-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith16",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par108040-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith17",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par108043-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith18",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par63428-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith19",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78365-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith20",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2018/09/cortex/par126803-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith21",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par63429-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith22",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par276542-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith23",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par117135-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith24",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par58387-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith25",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par108055-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith26",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par168828-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith27",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par151696-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith28",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46439-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith29",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78274-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith30",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78231-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith31",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par108056-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith32",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par151786-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith33",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78240-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith34",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par151717-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith35",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46472-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith36",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par151705-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith37",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par46469-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith38",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par51759-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith39",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par151721-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith40",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par108064-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith41",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par108068-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith42",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par151728-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith43",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par79328-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith44",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78248-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith45",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78201-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith46",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par92777-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith47",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par122283-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith48",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78734-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith49",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par78404-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith50",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par111401-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    },
+    {
+      "id": "a001-smith51",
+      "url": "https://content.magnumphotos.com/wp-content/uploads/2016/04/cortex/par58338-overlay.jpg",
+      "description": "",
+      "source": "s001-smith",
+      "albumId": "a001-smith",
+      "authorId": "smith01"
+    }
   ]
 }

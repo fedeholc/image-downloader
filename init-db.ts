@@ -115,7 +115,7 @@ function createTables(db: sqlite3.Database) {
 
   db.exec(
     `CREATE TABLE IF NOT EXISTS ${TableNames.image} (
-    ${ImageFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
+    ${ImageFields.id} TEXT PRIMARY KEY,
     ${ImageFields.url} TEXT NOT NULL,
     ${ImageFields.description} TEXT,
     ${ImageFields.source} TEXT,

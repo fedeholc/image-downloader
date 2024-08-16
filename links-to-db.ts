@@ -58,14 +58,14 @@ insertAlbum(album, db);
 insertSource(source, db);
 
 // read json file to an array
-const links = data.imgLinks;
+const links: Image[] = data.images;
 if (links.length === 0) {
   console.error("No links found in file");
   process.exit(1);
 }
 
-links.forEach((link: string) => {
-  const image: Image = { id: 0, url: link, description: "", source: source.id, albumId: album.id, authorId: authorId };
+links.forEach((link) => {
+  const image = link;
   console.log("Adding image: ", image);
 
   // insert image into database
@@ -114,13 +114,13 @@ function insertSource(source: Source, db: sqlite3.Database) {
 function insertImage(image: Image, db: sqlite3.Database) {
 
   db.run(
-    `INSERT INTO ${TableNames.image} (${ImageFields.albumId},${ImageFields.authorId},${ImageFields.description},${ImageFields.source},${ImageFields.url}) VALUES (?, ?, ?,?,?)`,
-    [image.albumId, image.authorId, image.description, image.source, image.url],
+    `INSERT INTO ${TableNames.image} (${ImageFields.id},${ImageFields.albumId},${ImageFields.authorId},${ImageFields.description},${ImageFields.source},${ImageFields.url}) VALUES (?,?,?,?,?,?)`,
+    [image.id, image.albumId, image.authorId, image.description, image.source, image.url],
     function (error) {
       if (error) {
         console.error(error.message);
       }
-      console.log(`Inserted a row with the ID: ${this.lastID}`);
+      console.log(`Inserted a row`);
     }
   );
 }

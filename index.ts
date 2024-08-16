@@ -5,6 +5,7 @@ import sharp from "sharp";
 import { fileURLToPath } from "url";
 import { Source, SourceSchema } from "./types/Source.ts";
 import { Album, AlbumSchema } from "./types/Album.ts";
+import { Image } from "./types/Image.ts";
 import { DownloadFilters, DownloadFiltersSchema } from "./types/DownloadFilters.ts";
 
 //* MAIN *
@@ -77,9 +78,16 @@ if (!downloadedLinks) {
 } else {
   console.log("Images downloaded successfully");
   data.imgLinks = downloadedLinks;
-  //fs.appendFileSync(imgUrlsPath, JSON.stringify([...downloadedLinks], null, 2));
-  fs.writeFileSync(filename, JSON.stringify(data, null, 2));
 
+  let images: Image[] = [];
+  downloadedLinks.forEach((link, index) => {
+
+    //TODO: acá hay que hacer que se agreguen ceros por delante (segun el total de imagenes de downloadLinks)
+
+    images.push({ id: album.id + (index + 1).toString(), url: link, description: "", source: source.id, albumId: album.id, authorId: data.authorId });
+  });
+  data.images = images;
+  fs.writeFileSync(filename, JSON.stringify(data, null, 2));
 }
 
 process.exit(0);
