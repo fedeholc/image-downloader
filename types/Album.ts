@@ -12,7 +12,7 @@ const AlbumSchema = z.object({
 
 enum AlbumFields {
   id = "id",
-  name = "nombre",
+  name = "name",
   description = "description",
   image = "image",
   dateCreated = "dateCreated",
