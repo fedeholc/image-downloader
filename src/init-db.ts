@@ -33,8 +33,9 @@ await closeDbConnection(db);
 
 process.exit(0);
 
-//* FUNCTIONS *
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+//* FUNCTIONS *
 
 async function checkFilePath(filepath: string) {
   const rl = readline.createInterface({

@@ -30,8 +30,8 @@ if (!fs.existsSync(sourceFile)) {
   process.exit(1);
 }
 
-
-const filepath = "./images.db";
+//TODO: no hardcodear el path, hay que crear un archivo de configuración.
+const filepath = "../data/images.db";
 const db = createDbConnection(filepath);
 
 const data = JSON.parse(fs.readFileSync(sourceFile, "utf-8"));

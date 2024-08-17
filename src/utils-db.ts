@@ -3,6 +3,7 @@ import sqlite3 from "sqlite3";
 
 export { createDbConnection, deleteDbFile, deleteTable, closeDbConnection };
 
+
 function closeDbConnection2(db: sqlite3.Database) {
   db.close((error) => {
     if (error) {

@@ -1,0 +1,147 @@
+{
+  "source": {
+    "id": "s004-krasner",
+    "url": "https://www.artsy.net/artist/lee-krasner",
+    "name": "www.artsy.net"
+  },
+  "album": {
+    "id": "a005-krasner",
+    "name": "Lee Krasner - Artsy",
+    "description": "Lee Krasner art on Artsy",
+    "image": "",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "artwork",
+    "imgMustInclude": "cloud",
+    "imgExclude": [
+      "nn",
+      "ny"
+    ],
+    "minImageWidth": 200,
+    "minImageHeight": 200
+  },
+  "authorId": "krasner01",
+  "imgLinks": [
+    "https://d7hftxdivxxvm.cloudfront.net?height=585&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F91ktz2Ej8SfJhoh779nDug%2Fnormalized.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=800&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKsi5fSqkCRD5vnJZh0Ehzw%2Fnormalized.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=618&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FMtS3EEcv14jC9UmT5wXWgw%2Fmain.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=800&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F8c67uHoDBUtXP9-2EmTDUQ%2Fmain.jpg&width=761",
+    "https://d7hftxdivxxvm.cloudfront.net?height=635&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F1vnly4-tw7joNvQa2dNvVA%2Fmain.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=533&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F9ZhnV-5pC2neOYyyq6dG4Q%2Fmain.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=600&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F-opPYg4MmiXfy528xl3zkg%2Fmain.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=619&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FzqX1nAVqT5RI7BolwLVwOg%2Fmain.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=800&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FEY-pdb6LiWC3A4VxIxRv0A%2Fnormalized.jpg&width=596",
+    "https://d7hftxdivxxvm.cloudfront.net?height=604&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCsOyh4MX6q70ynvzGQ52Jw%2Fnormalized.jpg&width=800",
+    "https://d7hftxdivxxvm.cloudfront.net?height=593&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FEY-pdb6LiWC3A4VxIxRv0A%2Flarger.jpg&width=445",
+    "https://d7hftxdivxxvm.cloudfront.net?height=706&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FJouo9JUVdkfh5x6wfboQYw%2Flarger.jpg&width=445",
+    "https://d7hftxdivxxvm.cloudfront.net?height=339&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FIGJv4LyprLGiCjntRbHXxA%2Flarger.jpg&width=445"
+  ],
+  "images": [
+    {
+      "id": "a005-krasner01",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=585&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F91ktz2Ej8SfJhoh779nDug%2Fnormalized.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner02",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=800&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKsi5fSqkCRD5vnJZh0Ehzw%2Fnormalized.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner03",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=618&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FMtS3EEcv14jC9UmT5wXWgw%2Fmain.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner04",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=800&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F8c67uHoDBUtXP9-2EmTDUQ%2Fmain.jpg&width=761",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner05",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=635&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F1vnly4-tw7joNvQa2dNvVA%2Fmain.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner06",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=533&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F9ZhnV-5pC2neOYyyq6dG4Q%2Fmain.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner07",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=600&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F-opPYg4MmiXfy528xl3zkg%2Fmain.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner08",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=619&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FzqX1nAVqT5RI7BolwLVwOg%2Fmain.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner09",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=800&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FEY-pdb6LiWC3A4VxIxRv0A%2Fnormalized.jpg&width=596",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner10",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=604&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCsOyh4MX6q70ynvzGQ52Jw%2Fnormalized.jpg&width=800",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner11",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=593&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FEY-pdb6LiWC3A4VxIxRv0A%2Flarger.jpg&width=445",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner12",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=706&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FJouo9JUVdkfh5x6wfboQYw%2Flarger.jpg&width=445",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    },
+    {
+      "id": "a005-krasner13",
+      "url": "https://d7hftxdivxxvm.cloudfront.net?height=339&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FIGJv4LyprLGiCjntRbHXxA%2Flarger.jpg&width=445",
+      "description": "",
+      "source": "s004-krasner",
+      "albumId": "a005-krasner",
+      "authorId": "krasner01"
+    }
+  ],
+  "rejectedLinks": []
+}
