@@ -6,7 +6,7 @@ import { AuthorFields } from "./types/Author";
 import { TableNames } from "./types/Tables";
 import { Author } from "./types/Author";
 
-import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
+import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "../utils-db";
 
 
 //* MAIN *

@@ -6,23 +6,35 @@ import { AuthorFields } from "./types/Author";
 import { ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
 import { SourceFields } from "./types/Source"
+import path from "path";
+import { fileURLToPath } from "url";
+
 
 import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
 
+//* MAIN *
 
-function askQuestion(query: string) {
-  return new Promise(resolve => {
-    return rl.question(query, (value) => resolve(value));
-  });
+
+// directorio en el cual se encuentra el archivo ejecutado
+const __dirname = import.meta.dirname;
+// ruta del archivo ejecutado
+const __filename = import.meta.filename;
+
+//argv[0] es el path del ejecutable de node
+//argv[1] es el path del archivo ejecutado
+//argv[2] es el primer argumento pasado al archivo ejecutado
+if (process.argv.length < 3) {
+  console.error("Usage: tsx init-db.ts <filename>");
+  process.exit(1);
 }
 
+let filepath: string = path.join(__dirname, process.argv[2]);
 
-//* MAIN *
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-let filepath: string = "./images.db";
+
 if (fs.existsSync(filepath)) {
   console.log("The database already exists.");
   const answer = await askQuestion("Do you want to delete it? (y/n): ");
@@ -47,11 +59,18 @@ const db = createDbConnection(filepath);
 
 createTables(db);
 
-
-
 closeDbConnection(db);
 
+process.exit(0);
+
 //* FUNCTIONS *
+
+function askQuestion(query: string) {
+  return new Promise(resolve => {
+    return rl.question(query, (value) => resolve(value));
+  });
+}
+
 
 function createTablesWithIntegerIds(db: sqlite3.Database) {
 

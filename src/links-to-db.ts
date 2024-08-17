@@ -10,7 +10,7 @@ import { TableNames } from "./types/Tables";
 import path from "path";
 
 import { fileURLToPath } from "url";
-import { createDbConnection, closeDbConnection } from "./utils-db";
+import { createDbConnection, closeDbConnection } from "./utils-db.ts";
 import { Source, SourceFields } from "./types/Source.ts";
 
 const __filename = fileURLToPath(import.meta.url);
