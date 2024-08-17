@@ -42,7 +42,7 @@ const db = createDbConnection(dbFilename);
 
 insertAuthor(author, db);
 
-closeDbConnection(db);
+await closeDbConnection(db);
 
 process.exit(0);
 

@@ -25,13 +25,11 @@ if (process.argv.length < 3) {
 }
 
 let filepath = await checkFilePath(process.argv[2]);
-//filepath = path.join(__dirname, filepath);
 console.log(filepath);
 const db = createDbConnection(filepath);
 console.log(db);
 createTables(db);
-
-closeDbConnection(db);
+await closeDbConnection(db);
 
 process.exit(0);
 
@@ -128,10 +126,11 @@ function createTablesWithIntegerIds(db: sqlite3.Database) {
 }
 
 
-function createTables(db: sqlite3.Database) {
+function createTables(db: sqlite3.Database): Promise<void> {
+  return new Promise((resolve, reject) => {
 
-  db.exec(
-    `CREATE TABLE IF NOT EXISTS ${TableNames.image} (
+    db.exec(
+      `CREATE TABLE IF NOT EXISTS ${TableNames.image} (
     ${ImageFields.id} TEXT PRIMARY KEY,
     ${ImageFields.url} TEXT NOT NULL,
     ${ImageFields.description} TEXT,
@@ -141,63 +140,74 @@ function createTables(db: sqlite3.Database) {
     FOREIGN KEY(${ImageFields.authorId}) REFERENCES ${TableNames.author}(id),
     FOREIGN KEY(${ImageFields.albumId}) REFERENCES ${TableNames.album}(id)
   )`,
-    (error) => {
-      if (error) {
-        return console.error(error.message);
-      } else {
-        console.log("Table created.");
-      }
-    }
-  );
+      (error) => {
+        if (error) {
+          console.error(error.message);
+          reject(error);
 
-  db.exec(
-    `CREATE TABLE IF NOT EXISTS ${TableNames.author} (
+        } else {
+          console.log("Table created.");
+        }
+      }
+    );
+
+    db.exec(
+      `CREATE TABLE IF NOT EXISTS ${TableNames.author} (
     ${AuthorFields.id} TEXT PRIMARY KEY,
     ${AuthorFields.name} TEXT NOT NULL,
     ${AuthorFields.description} TEXT,
     ${AuthorFields.image} TEXT)`,
-    (error) => {
-      if (error) {
-        return console.error(error.message);
-      }
-      else {
-        console.log("Table created.");
-      }
-    }
-  );
+      (error) => {
+        if (error) {
+          console.error(error.message);
+          reject(error);
 
-  db.exec(
-    `CREATE TABLE IF NOT EXISTS ${TableNames.album} (
+        }
+        else {
+          console.log("Table created.");
+        }
+      }
+    );
+
+    db.exec(
+      `CREATE TABLE IF NOT EXISTS ${TableNames.album} (
     ${AlbumFields.id} TEXT PRIMARY KEY,
     ${AlbumFields.name} TEXT NOT NULL,
     ${AlbumFields.description} TEXT,
     ${AlbumFields.image} TEXT,
     ${AlbumFields.dateCreated} TEXT)`,
 
-    (error) => {
-      if (error) {
-        return console.error(error.message);
-      }
-      else {
-        console.log("Table created.");
-      }
-    }
-  );
+      (error) => {
+        if (error) {
+          console.error(error.message);
+          reject(error);
 
-  db.exec(
-    `CREATE TABLE IF NOT EXISTS ${TableNames.source} (
+        }
+        else {
+          console.log("Table created.");
+        }
+      }
+    );
+
+    db.exec(
+      `CREATE TABLE IF NOT EXISTS ${TableNames.source} (
     ${SourceFields.id} TEXT PRIMARY KEY,
     ${SourceFields.name} TEXT NOT NULL,
     ${SourceFields.url} TEXT)`,
 
-    (error) => {
-      if (error) {
-        return console.error(error.message);
+      (error) => {
+        if (error) {
+          console.error(error.message);
+          reject(error);
+
+        }
+        else {
+          console.log("Table created.");
+        }
       }
-      else {
-        console.log("Table created.");
-      }
-    }
-  );
+    );
+    resolve();
+
+  });
 }
 

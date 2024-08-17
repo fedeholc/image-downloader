@@ -3,13 +3,27 @@ import sqlite3 from "sqlite3";
 
 export { createDbConnection, deleteDbFile, deleteTable, closeDbConnection };
 
-function closeDbConnection(db: sqlite3.Database) {
+function closeDbConnection2(db: sqlite3.Database) {
   db.close((error) => {
     if (error) {
       return console.error(error.message);
     } else {
       console.log("Database connection closed");
     }
+  });
+}
+
+function closeDbConnection(db: sqlite3.Database): Promise<void> {
+  return new Promise((resolve, reject) => {
+    db.close((error) => {
+      if (error) {
+        console.error("Error closing the database:", error.message);
+        reject(error);
+      } else {
+        console.log("Database connection closed");
+        resolve();
+      }
+    });
   });
 }
 
@@ -20,17 +34,22 @@ function createDbConnection(filepath: string): sqlite3.Database {
     console.log("Creating database2");
   }
 
-  let a = new sqlite3.Database(filepath, (error) => {
-    if (error) {
-      console.log("nueva db");
-      return console.error(error.message);
-    } else {
-      console.log("Connection with SQLite has been established");
-    }
 
-  });
-  console.log(a);
-  return a;
+  try {
+    let db = new sqlite3.Database(filepath, (error) => {
+      if (error) {
+        console.error("Error creating database:", error.message);
+      } else {
+        console.log("Connection with SQLite has been established");
+      }
+    });
+
+    console.log("Database object created:", db);
+    return db;
+  } catch (error) {
+    console.error("Unexpected error:", error);
+    throw error;
+  }
 }
 
 
