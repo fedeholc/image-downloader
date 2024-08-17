@@ -6,14 +6,9 @@ import { AuthorFields } from "./types/Author";
 import { ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
 import { SourceFields } from "./types/Source"
-import path from "path";
-import { fileURLToPath } from "url";
-
-
 import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
 
 //* MAIN *
-
 
 // directorio en el cual se encuentra el archivo ejecutado
 const __dirname = import.meta.dirname;
@@ -28,33 +23,8 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-let filepath: string = path.join(__dirname, process.argv[2]);
+let filepath = await checkFilePath(process.argv[2]);
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-if (fs.existsSync(filepath)) {
-  console.log("The database already exists.");
-  const answer = await askQuestion("Do you want to delete it? (y/n): ");
-
-  if (answer === "y") {
-    await deleteDbFile(filepath);
-  } else {
-    const newName = await askQuestion("Enter the new path/name of the database: ") as string;
-    if (!newName) {
-      console.log("You must enter a valid path/name.");
-      process.exit(1);
-    }
-    filepath = newName;
-  }
-
-  rl.close();
-
-}
-
-//create a database if it doesn't exist
 const db = createDbConnection(filepath);
 
 createTables(db);
@@ -65,7 +35,33 @@ process.exit(0);
 
 //* FUNCTIONS *
 
-function askQuestion(query: string) {
+
+async function checkFilePath(filepath: string) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  if (fs.existsSync(filepath)) {
+    console.log("The database already exists.");
+    const answer = await askQuestion("Do you want to delete it? (y/n): ", rl);
+    if (answer === "y") {
+      await deleteDbFile(filepath);
+    } else {
+      const newName = await askQuestion("Enter the new path/name of the database: ", rl) as string;
+      if (!newName) {
+        console.log("You must enter a valid path/name.");
+        process.exit(1);
+      }
+      return newName;
+    }
+    rl.close();
+
+  }
+  return filepath;
+}
+
+function askQuestion(query: string, rl: readline.Interface) {
   return new Promise(resolve => {
     return rl.question(query, (value) => resolve(value));
   });
