@@ -7,6 +7,7 @@ import { ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
 import { SourceFields } from "./types/Source"
 import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
+import path from "path";
 
 //* MAIN *
 
@@ -24,9 +25,10 @@ if (process.argv.length < 3) {
 }
 
 let filepath = await checkFilePath(process.argv[2]);
-
+//filepath = path.join(__dirname, filepath);
+console.log(filepath);
 const db = createDbConnection(filepath);
-
+console.log(db);
 createTables(db);
 
 closeDbConnection(db);

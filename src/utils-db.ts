@@ -1,7 +1,7 @@
 import fs from "fs";
 import sqlite3 from "sqlite3";
 
-export { createDbConnection, deleteDbFile, deleteTable , closeDbConnection};
+export { createDbConnection, deleteDbFile, deleteTable, closeDbConnection };
 
 function closeDbConnection(db: sqlite3.Database) {
   db.close((error) => {
@@ -15,20 +15,22 @@ function closeDbConnection(db: sqlite3.Database) {
 
 function createDbConnection(filepath: string): sqlite3.Database {
   if (fs.existsSync(filepath)) {
-    console.log("Database already exists");
+    console.log("Database exists");
   } else {
-    console.log("Creating database");
+    console.log("Creating database2");
   }
 
-  return new sqlite3.Database(filepath, (error) => {
+  let a = new sqlite3.Database(filepath, (error) => {
     if (error) {
+      console.log("nueva db");
       return console.error(error.message);
     } else {
       console.log("Connection with SQLite has been established");
     }
 
   });
-
+  console.log(a);
+  return a;
 }
 
 

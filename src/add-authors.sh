@@ -1,2 +1,2 @@
-tsx add-author ./authors/smith01.json
-tsx add-author ./authors/davidson01.json
+tsx add-author ../data/authors/smith01.json ../data/images.db
+tsx add-author ../data/authors/davidson01.json ../data/images.db
