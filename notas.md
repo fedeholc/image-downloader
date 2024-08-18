@@ -12,3 +12,9 @@ Procedimiento:
   - Si se corre el index con --no-downloads se guardan los links sin tener que descargar las imagenes. Con un album nuevo la primera vez esta bueno hacerlo para ver si los filtros están bien pero luego ya no hace falta.
   - Con `download-sources.sh` se ejecuta `index.ts` para todos los albums en la carpeta `sources` sin descargar las imagenes.
 - Finalmente con `links-to-db` se leen los links de los jsons y se guardan en la base de datos.
+
+
+---
+
+sed -i 's/height=[0-9]\{3\}/height=1080/g' s004-krasner.json
+sed -i.bak 's/width=[0-9]\{3\}/width=1920/g' s004-krasner.json
