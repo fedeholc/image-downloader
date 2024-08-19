@@ -1,7 +1,7 @@
 import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
-import { addZerosToId } from "./utils";
+import { addZerosToId } from "./utils/utils";
 import type { Image } from "./types/Image";
 const imgUrlsFile = "images-urls.json";
 const imgFilteredUrlsFile = "images-filtered-urls.json";

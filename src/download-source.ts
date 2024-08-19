@@ -6,8 +6,8 @@ import { Source, SourceSchema } from "./types/Source.ts";
 import { Album, AlbumSchema } from "./types/Album.ts";
 import { Image } from "./types/Image.ts";
 import { DownloadFilters, DownloadFiltersSchema } from "./types/DownloadFilters.ts";
-import { addZerosToId } from "./utils.ts";
-
+import { addZerosToId } from "./utils/utils.ts";
+import { config } from "./config.ts";
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -110,12 +110,11 @@ function createBackupFile(sourceFile: string) {
 }
 
 function createDownloadDir(sourceId: string): string {
-  //TODO: no hardcodear el path
-  const imgOutputDir = path.join(__dirname, "../data/downloads/", sourceId);
+  const imgOutputDir = path.join(config.downloadPath, sourceId);
 
   try {
     // Check if the /downloads/ directory exists, if not, create it
-    const baseDownloadDir = path.join(__dirname, "../data/downloads/");
+    const baseDownloadDir = config.downloadPath;
     if (!fs.existsSync(baseDownloadDir)) {
       fs.mkdirSync(baseDownloadDir);
     }

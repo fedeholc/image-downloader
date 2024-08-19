@@ -5,45 +5,45 @@ import { AuthorSchema } from "./types/Author";
 import { AuthorFields } from "./types/Author";
 import { TableNames } from "./types/Tables";
 import { Author } from "./types/Author";
-import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
+import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils/utils-db";
 import { config } from "./config";
-
+import path from "path";
 //* MAIN *
+const __dirname = import.meta.dirname;
 
-if (process.argv.length < 4) {
-  console.error("Usage: node add-author.js <author-filename.json> <db-filename>");
+const files = fs.readdirSync(config.authorsPath);
+
+const authorFiles = files.filter((file) => file.match(/\.(json)$/));
+
+if (authorFiles.length === 0) {
+  console.error("No author files found in directory: ", config.authorsPath);
   process.exit(1);
 }
 
-const filename = process.argv[2];
-if (!fs.existsSync(filename) || !filename.endsWith(".json")) {
-  console.error("File not found or not a json file");
-  process.exit(1);
-}
-
-let dbFilename = process.argv[3];
+let dbFilename = config.dbPath;
 if (!fs.existsSync(dbFilename)) {
-  console.error("DB file not found");
+  console.error("DB file not found:", dbFilename);
   process.exit(1);
 }
 // read file
-console.log("Processing ", filename)
-const author: Author = JSON.parse(fs.readFileSync(filename, "utf8"));
-
-try {
-  const validatedData = AuthorSchema.parse(author);
-  console.log('Validation succeeded:', validatedData);
-} catch (error) {
-  console.error('Validation failed:', error.errors);
-  process.exit(1);
-}
 
 const db = createDbConnection(dbFilename);
 
-insertAuthor(author, db);
+authorFiles.forEach((filename) => {
+  console.log("Processing ", filename)
+  const author: Author = JSON.parse(fs.readFileSync(path.join(config.authorsPath, filename), "utf8"));
+
+  try {
+    const validatedData = AuthorSchema.parse(author);
+    console.log('Validation succeeded:', validatedData);
+  } catch (error) {
+    console.error('Validation failed:', error.errors);
+    process.exit(1);
+  }
+  insertAuthor(author, db);
+});
 
 await closeDbConnection(db);
-
 process.exit(0);
 
 //* FUNCTIONS *

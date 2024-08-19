@@ -1,3 +1,6 @@
+//Uso: tsx init-db.ts <filename.db>
+// si no se especifica el nombre del archivo, se usa el valor por defecto en config.ts
+
 import sqlite3 from "sqlite3";
 import fs from "fs";
 import readline from "readline";
@@ -8,6 +11,7 @@ import { TableNames } from "./types/Tables";
 import { SourceFields } from "./types/Source"
 import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
 import path from "path";
+import { config } from "./config";
 
 //* MAIN *
 
@@ -19,13 +23,26 @@ const __filename = import.meta.filename;
 //argv[0] es el path del ejecutable de node
 //argv[1] es el path del archivo ejecutado
 //argv[2] es el primer argumento pasado al archivo ejecutado
-if (process.argv.length < 3) {
-  console.error("Usage: tsx init-db.ts <filename>");
-  process.exit(1);
+
+let filepath = "";
+if (process.argv.length >= 3) {
+  try {
+    filepath = await checkFilePath(process.argv[2]);
+  } catch (error) {
+    console.error("Error accesing database file: ", process.argv[2], error);
+    process.exit(1);
+  }
+} else {
+  try {
+    filepath = await checkFilePath(config.dbPath);
+  } catch (error) {
+    console.error("Error accesing database file: ", config.dbPath, error);
+    process.exit(1);
+  }
 }
 
-let filepath = await checkFilePath(process.argv[2]);
-console.log(filepath);
+console.log("DB: ", filepath);
+
 const db = createDbConnection(filepath);
 console.log(db);
 createTables(db);
@@ -49,7 +66,7 @@ async function checkFilePath(filepath: string) {
     if (answer === "y") {
       await deleteDbFile(filepath);
     } else {
-      const newName = await askQuestion("Enter the new path/name of the database: ", rl) as string;
+      const newName = await askQuestion("Enter the new path/name of the database (Enter to abort): ", rl) as string;
       if (!newName) {
         console.log("You must enter a valid path/name.");
         process.exit(1);
@@ -66,64 +83,6 @@ function askQuestion(query: string, rl: readline.Interface) {
   return new Promise(resolve => {
     return rl.question(query, (value) => resolve(value));
   });
-}
-
-
-function createTablesWithIntegerIds(db: sqlite3.Database) {
-
-  db.exec(
-    `CREATE TABLE IF NOT EXISTS ${TableNames.image} (
-    ${ImageFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
-    ${ImageFields.url} TEXT NOT NULL,
-    ${ImageFields.description} TEXT,
-    ${ImageFields.source} TEXT,
-    ${ImageFields.albumId} INTEGER,
-    ${ImageFields.authorId} INTEGER,
-    FOREIGN KEY(${ImageFields.authorId}) REFERENCES ${TableNames.author}(id),
-    FOREIGN KEY(${ImageFields.albumId}) REFERENCES ${TableNames.album}(id)
-  )`,
-    (error) => {
-      if (error) {
-        return console.error(error.message);
-      } else {
-        console.log("Table created.");
-      }
-    }
-  );
-
-  db.exec(
-    `CREATE TABLE IF NOT EXISTS ${TableNames.author} (
-    ${AuthorFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
-    ${AuthorFields.name} TEXT NOT NULL,
-    ${AuthorFields.description} TEXT,
-    ${AuthorFields.image} TEXT)`,
-    (error) => {
-      if (error) {
-        return console.error(error.message);
-      }
-      else {
-        console.log("Table created.");
-      }
-    }
-  );
-
-  db.exec(
-    `CREATE TABLE IF NOT EXISTS ${TableNames.album} (
-    ${AlbumFields.id} INTEGER PRIMARY KEY AUTOINCREMENT,
-    ${AlbumFields.name} TEXT NOT NULL,
-    ${AlbumFields.description} TEXT,
-    ${AlbumFields.image} TEXT,
-    ${AlbumFields.dateCreated} TEXT)`,
-
-    (error) => {
-      if (error) {
-        return console.error(error.message);
-      }
-      else {
-        console.log("Table created.");
-      }
-    }
-  );
 }
 
 
