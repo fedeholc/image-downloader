@@ -8,6 +8,7 @@ type DownloadFilters = {
   imgExclude: string[];
   minImageWidth: number;
   minImageHeight: number;
+  usePlaywright?: boolean;
 }
 
 const DownloadFiltersSchema = z.object({

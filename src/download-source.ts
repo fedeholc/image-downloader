@@ -8,6 +8,7 @@ import { Image } from "./types/Image.ts";
 import { DownloadFilters, DownloadFiltersSchema } from "./types/DownloadFilters.ts";
 import { addZerosToId } from "./utils/utils.ts";
 import { config } from "./config.ts";
+import { chromium } from 'playwright';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -43,9 +44,9 @@ if (subPages && subPages.size > 0) {
   downloadedLinks = await getImages(subPages, filters);
 } else {
   console.log("busco sin subp:", source.url);
-  let links = new Set<string>();
-  links.add(source.url);
-  downloadedLinks = await getImages(links, filters);
+  let page = new Set<string>();
+  page.add(source.url);
+  downloadedLinks = await getImages(page, filters);
 }
 
 if (!downloadedLinks) {
@@ -293,8 +294,6 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
       }
     });
 
-
-
     return Array.from(uniqueImgUrls);
   } catch (err) {
     console.error(`Error processing ${pageUrl}: ${err.message}`);
@@ -306,27 +305,59 @@ async function getImages(pages: Set<string>, filters: DownloadFilters): Promise<
     return;
   }
   const imagesList: Set<string> = new Set();
-  console.log("Pages:", pages)
-  for (let page of pages) {
-    //VER Sería para resolver URLs relativas, pero no lo probé aún
-    if (page && !page.startsWith("http")) {
-      const url = new URL(source.url);
-      console.log("URL:", source.url, url.origin, page);
-      page = url.origin + page;
 
-      console.log("URL resuelta:", page);
+  //TODO: acá tendría que checkiar si hay que leer los links de la página o si hacerlo desde un archivo aparte o desde otra variable del mismo json, de lo generado a partir de playwright. y al final llamar a downloadImages con la lista de links.
+
+  if (filters.usePlaywright && filters.usePlaywright === true) {
+    console.log("Usando playwright");
+    for (let webpage of pages) {
+      const browser = await chromium.launch();
+      const wpage = await browser.newPage();
+      await wpage.goto(webpage);
+      await wpage.waitForLoadState("domcontentloaded");
+
+      const itemsContainer = await wpage.locator('img').all();
+      //console.log("largo:", itemsContainer.length);
+      let result = [];
+      for (let item of itemsContainer) {
+        if (item) {
+          const src = await item.getAttribute('src');
+          if (src) {
+            imagesList.add(src);
+          }
+
+          const srcSet = await item.getAttribute('srcset');
+
+          //convert srcset to array
+          if (srcSet) {
+            const srcArray = srcSet.split(",");
+            const srcArray2 = srcArray.map((item) => {
+              return item.split(" ")[0];
+            });
+            srcArray2.forEach(element => imagesList.add(element));
+          }
+        }
+
+      };
     }
-
-    // Evitar URLs vacías y anclas
-    if (page && !page.startsWith("#")) {
-      console.log(`Procesando: ${page}`);
-
-      let urls = await getImagesUrls(page);
-
-      if (urls) {
-        urls.forEach(element => imagesList.add(element));
+  }
+  else { //sin playwright
+    console.log("Pages:", pages)
+    for (let page of pages) {
+      //VER Sería para resolver URLs relativas, pero no lo probé aún
+      if (page && !page.startsWith("http")) {
+        const url = new URL(source.url);
+        page = url.origin + page;
       }
 
+      // Evitar URLs vacías y anclas
+      if (page && !page.startsWith("#")) {
+        console.log(`Procesando: ${page}`);
+        let urls = await getImagesUrls(page);
+        if (urls) {
+          urls.forEach(element => imagesList.add(element));
+        }
+      }
     }
   }
 
