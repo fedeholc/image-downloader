@@ -192,6 +192,7 @@ async function getSubPages(pageUrl: string, filters: DownloadFilters): Promise<S
 }
 
 async function downloadImages(imagesUrls: string[], filters: DownloadFilters): Promise<string[]> {
+  console.log("Imagenes a bajar:", imagesUrls);
   let downloadedImages: string[] = [];
   try {
     if (!fs.existsSync(imgOutputDir)) {
@@ -255,6 +256,18 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
   return downloadedImages;
 }
 
+function extractImageSrcs(html: string): string[] {
+  const srcs: string[] = [];
+  const imgTagRegex = /<img[^>]+src="([^">]+)"/g;
+  let match;
+
+  while ((match = imgTagRegex.exec(html)) !== null) {
+    srcs.push(match[1]);
+  }
+
+  return srcs;
+}
+
 async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
   try {
     // Evitar visitar la misma URL más de una vez
@@ -272,13 +285,16 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
     const uniqueImgUrls = new Set<string>();
     const imgs = document.querySelectorAll("img");
     console.log("Imgs:", Array.from(imgs));
-    console.log("doc:",document.body.innerHTML);
+    console.log("doc:", document.body.innerHTML);
     imgs.forEach((img) => {
       const src = img.getAttribute("src");
       if (src) {
         uniqueImgUrls.add(src);
       }
     });
+
+
+
     return Array.from(uniqueImgUrls);
   } catch (err) {
     console.error(`Error processing ${pageUrl}: ${err.message}`);

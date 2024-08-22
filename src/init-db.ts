@@ -9,7 +9,7 @@ import { AuthorFields } from "./types/Author";
 import { ImageFields } from "./types/Image";
 import { TableNames } from "./types/Tables";
 import { SourceFields } from "./types/Source"
-import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils-db";
+import { createDbConnection, deleteDbFile, deleteTable, closeDbConnection } from "./utils/utils-db";
 import path from "path";
 import { config } from "./config";
 

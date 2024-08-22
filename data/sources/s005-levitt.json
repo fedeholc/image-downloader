@@ -13,15 +13,95 @@
   },
   "downloadFilters": {
     "subPageMustInclude": "Nadadedeadnada",
-    "imgMustInclude": "super",
-    "imgExclude": [
-      "",
-      ""
-    ],
+    "imgMustInclude": "lens",
+    "imgExclude": "",
     "minImageWidth": 200,
     "minImageHeight": 200
   },
   "authorId": "levitt01",
-  "imgLinks": [],
-  "images": []
+  "imgLinks": [
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-facebookJumbo.jpg?year=2019&amp;h=549&amp;w=1050&amp;s=abaf433fe9757366a4807618ad81e6a9487a38753d8f61d37c1e77a47aabff22&amp;k=ZQJBKqZ0VN",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-videoSixteenByNine3000.jpg?year=2019&amp;h=1688&amp;w=3000&amp;s=3ad2ce977630eeaa88f2dc8c84585aac822a8613dc9f8e1f4e38f0ac99a7e223&amp;k=ZQJBKqZ0VN&amp;tw=1",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-videoSixteenByNineJumbo1600.jpg",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-superJumbo.jpg",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-articleLarge.jpg?quality=75&amp;auto=webp&amp;disable=upscale",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-articleLarge.jpg?quality=75&amp;auto=webp",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-jumbo.jpg?quality=75&amp;auto=webp",
+    "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-superJumbo.jpg?quality=75&amp;auto=webp"
+  ],
+  "images": [
+    {
+      "id": "a005-levitt1",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt2",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-facebookJumbo.jpg?year=2019&amp;h=549&amp;w=1050&amp;s=abaf433fe9757366a4807618ad81e6a9487a38753d8f61d37c1e77a47aabff22&amp;k=ZQJBKqZ0VN",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt3",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-videoSixteenByNine3000.jpg?year=2019&amp;h=1688&amp;w=3000&amp;s=3ad2ce977630eeaa88f2dc8c84585aac822a8613dc9f8e1f4e38f0ac99a7e223&amp;k=ZQJBKqZ0VN&amp;tw=1",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt4",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-videoSixteenByNineJumbo1600.jpg",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt5",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-superJumbo.jpg",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt6",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-articleLarge.jpg?quality=75&amp;auto=webp&amp;disable=upscale",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt7",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-articleLarge.jpg?quality=75&amp;auto=webp",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt8",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-jumbo.jpg?quality=75&amp;auto=webp",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    },
+    {
+      "id": "a005-levitt9",
+      "url": "https://static01.nyt.com/images/2019/01/17/lens/16lyons/16lyons-superJumbo.jpg?quality=75&amp;auto=webp",
+      "description": "",
+      "source": "s005-levitt",
+      "albumId": "a005-levitt",
+      "authorId": "levitt01"
+    }
+  ]
 }
