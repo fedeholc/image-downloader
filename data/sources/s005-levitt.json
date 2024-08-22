@@ -1,0 +1,27 @@
+{
+  "source": {
+    "id": "s005-levitt",
+    "url": "https://www.nytimes.com/2019/01/16/lens/helen-levitts-street-photos-blend-the-poetic-with-the-political.html",
+    "name": "The New York Times"
+  },
+  "album": {
+    "id": "a005-levitt",
+    "name": "Helen Levitt (from The New York Times)",
+    "description": "Photos by Helen Levitt from The New York Times",
+    "image": "https://static01.nyt.com/images/2019/01/15/lens/16lyons3/16lyons3-superJumbo.jpg?quality=75&auto=webp",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "Nadadedeadnada",
+    "imgMustInclude": "super",
+    "imgExclude": [
+      "",
+      ""
+    ],
+    "minImageWidth": 200,
+    "minImageHeight": 200
+  },
+  "authorId": "levitt01",
+  "imgLinks": [],
+  "images": []
+}

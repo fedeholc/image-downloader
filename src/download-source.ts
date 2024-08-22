@@ -39,9 +39,13 @@ let downloadedLinks: string[] | undefined = [];
 //Si no hay subpáginas descargo solo desde la página principal
 if (subPages && subPages.size > 0) {
   subPages.add(source.url);
+  console.log("busco con subp:", subPages);
   downloadedLinks = await getImages(subPages, filters);
 } else {
-  downloadedLinks = await getImages(new Set(source.url), filters);
+  console.log("busco sin subp:", source.url);
+  let links = new Set<string>();
+  links.add(source.url);
+  downloadedLinks = await getImages(links, filters);
 }
 
 if (!downloadedLinks) {
@@ -171,11 +175,13 @@ async function getSubPages(pageUrl: string, filters: DownloadFilters): Promise<S
     const document = dom.window.document;
     const subPages = new Set<string>();
     const links = document.querySelectorAll("a");
+    console.log("Subpaginas:", links)
     links.forEach((link) => {
       const href = link.getAttribute("href");
       //TODO: qué pasa si no existe subPageMustInclude?? y si lo quiero hacer un array para checkiar varias cosas?
       if (href && href.includes(filters.subPageMustInclude)) {
         subPages.add(href);
+        console.log("Agregada:", href);
       }
     });
     return subPages;
@@ -256,7 +262,7 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
       return;
     }
     visitedUrls.add(pageUrl);
-
+    console.log("pageurl", pageUrl)
     const response = await fetch(pageUrl);
     const html = await response.text();
 
@@ -265,13 +271,14 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
     const document = dom.window.document;
     const uniqueImgUrls = new Set<string>();
     const imgs = document.querySelectorAll("img");
+    console.log("Imgs:", Array.from(imgs));
+    console.log("doc:",document.body.innerHTML);
     imgs.forEach((img) => {
       const src = img.getAttribute("src");
       if (src) {
         uniqueImgUrls.add(src);
       }
     });
-
     return Array.from(uniqueImgUrls);
   } catch (err) {
     console.error(`Error processing ${pageUrl}: ${err.message}`);
@@ -283,11 +290,15 @@ async function getImages(pages: Set<string>, filters: DownloadFilters): Promise<
     return;
   }
   const imagesList: Set<string> = new Set();
+  console.log("Pages:", pages)
   for (let page of pages) {
     //VER Sería para resolver URLs relativas, pero no lo probé aún
     if (page && !page.startsWith("http")) {
       const url = new URL(source.url);
+      console.log("URL:", source.url, url.origin, page);
       page = url.origin + page;
+
+      console.log("URL resuelta:", page);
     }
 
     // Evitar URLs vacías y anclas
