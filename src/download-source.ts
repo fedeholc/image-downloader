@@ -187,7 +187,7 @@ async function getSubPages(pageUrl: string, filters: DownloadFilters): Promise<S
     });
     return subPages;
   } catch (err) {
-    console.error(`Error processing ${pageUrl}: ${err.message}`);
+    console.error(`Error getting subpages from ${pageUrl}: ${err.message}`);
     return;
   }
 }
@@ -201,13 +201,15 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
     }
 
     for (let imgUrl of imagesUrls) {
+
       // VER Sería para resolver URLs relativas (no lo probé aún)
       if (imgUrl.startsWith("//")) {
         imgUrl = "http:" + imgUrl;
       } else if (imgUrl.startsWith("/")) {
-        const url = new URL(imgUrl);
+        const url = new URL(source.url);
         imgUrl = url.origin + imgUrl;
       }
+      console.log("Descargando:", imgUrl);
 
       //TODO: chekiar que existan los filtros, implementar que puedan ser arrays
       if (!imgUrl.includes(filters.imgMustInclude)) {
@@ -252,21 +254,9 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
       }
     }
   } catch (err) {
-    console.error(`Error processing ${imagesUrls}: ${err.message}`);
+    console.error(`Error downloading images  : ${err.message}`);
   }
   return downloadedImages;
-}
-
-function extractImageSrcs(html: string): string[] {
-  const srcs: string[] = [];
-  const imgTagRegex = /<img[^>]+src="([^">]+)"/g;
-  let match;
-
-  while ((match = imgTagRegex.exec(html)) !== null) {
-    srcs.push(match[1]);
-  }
-
-  return srcs;
 }
 
 async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
@@ -286,7 +276,7 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
     const uniqueImgUrls = new Set<string>();
     const imgs = document.querySelectorAll("img");
     console.log("Imgs:", Array.from(imgs));
-    console.log("doc:", document.body.innerHTML);
+    //console.log("doc:", document.body.innerHTML);
     imgs.forEach((img) => {
       const src = img.getAttribute("src");
       if (src) {
@@ -294,9 +284,30 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
       }
     });
 
+
+    //incluí también imagenes que vienen en links
+    const aimgs = document.querySelectorAll("a");
+    aimgs.forEach((aimg) => {
+      let hrefs = aimg.getAttribute("href");
+      if (hrefs && !hrefs.startsWith("http")) {
+        const url = new URL(source.url);
+        hrefs = url.origin + hrefs;
+      }
+
+      if (hrefs) {
+        if (hrefs.endsWith(".jpg") || hrefs.endsWith(".jpeg") || hrefs.endsWith(".png") || hrefs.endsWith(".gif")) {
+          console.log("href", hrefs);
+
+          uniqueImgUrls.add(hrefs);
+        }
+      }
+    });
+
+    console.log("Imagenes:", uniqueImgUrls);
+
     return Array.from(uniqueImgUrls);
   } catch (err) {
-    console.error(`Error processing ${pageUrl}: ${err.message}`);
+    console.error(`Error processing page ${pageUrl}: ${err.message}`);
   }
 }
 
