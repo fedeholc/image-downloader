@@ -209,7 +209,6 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
         const url = new URL(source.url);
         imgUrl = url.origin + imgUrl;
       }
-      console.log("Descargando:", imgUrl);
 
       //TODO: chekiar que existan los filtros, implementar que puedan ser arrays (para el exclude està como array pero para include no)
 
@@ -220,23 +219,12 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
       }
       if (filters.imgMustInclude && typeof (filters.imgMustInclude) === "object" && filters.imgMustInclude.length > 0) {
         let include = true;
-        filters.imgMustInclude.forEach((item) => {
-          console.log("img:", imgUrl, "item:", item, "includes:", imgUrl.includes(item));
-          if (!imgUrl.includes(item)) {
-            include = false;
-          }
-        })
+        include = filters.imgMustInclude.every((item) => imgUrl.includes(item));
         if (!include) continue;
       }
 
       let exclude = false;
-      if (filters.imgExclude.length > 0) {
-        filters.imgExclude.forEach((item) => {
-          if (imgUrl.includes(item)) {
-            exclude = true;
-          }
-        })
-      }
+      exclude = filters.imgExclude.some((item) => imgUrl.includes(item));
       if (exclude) continue;
 
       try {
@@ -270,6 +258,7 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
   } catch (err) {
     console.error(`Error downloading images  : ${err.message}`);
   }
+  console.log("Downloaded Images:", downloadedImages.length);
   return downloadedImages;
 }
 
@@ -280,7 +269,6 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
       return;
     }
     visitedUrls.add(pageUrl);
-    console.log("pageurl", pageUrl)
     const response = await fetch(pageUrl);
     const html = await response.text();
 
@@ -304,13 +292,10 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
         const srcArray2 = srcArray.map((item) => {
           return item.trim().split(" ")[0];
         });
-        console.log("PAGE:", pageUrl)
-        //console.log("SRCSET:", srcArray2);
 
         srcArray2.forEach(element => uniqueImgUrls.add(element));
       }
     });
-    console.log("unique: ", uniqueImgUrls)
 
 
     //incluí también imagenes que vienen en links
@@ -330,7 +315,7 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
       }
     });
 
-    console.log("Imagenes:", uniqueImgUrls);
+    console.log("Unique Images:", uniqueImgUrls.size);
 
     return Array.from(uniqueImgUrls);
   } catch (err) {
