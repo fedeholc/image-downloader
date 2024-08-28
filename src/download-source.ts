@@ -193,7 +193,7 @@ async function getSubPages(pageUrl: string, filters: DownloadFilters): Promise<S
 }
 
 async function downloadImages(imagesUrls: string[], filters: DownloadFilters): Promise<string[]> {
-  console.log("Imagenes a bajar:", imagesUrls);
+  //console.log("Imagenes a bajar:", imagesUrls);
   let downloadedImages: string[] = [];
   try {
     if (!fs.existsSync(imgOutputDir)) {
@@ -211,10 +211,24 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
       }
       console.log("Descargando:", imgUrl);
 
-      //TODO: chekiar que existan los filtros, implementar que puedan ser arrays
-      if (!imgUrl.includes(filters.imgMustInclude)) {
-        continue;
+      //TODO: chekiar que existan los filtros, implementar que puedan ser arrays (para el exclude està como array pero para include no)
+
+      if (typeof (filters.imgMustInclude) === "string") {
+        if (!imgUrl.includes(filters.imgMustInclude)) {
+          continue;
+        }
       }
+      if (filters.imgMustInclude && typeof (filters.imgMustInclude) === "object" && filters.imgMustInclude.length > 0) {
+        let include = true;
+        filters.imgMustInclude.forEach((item) => {
+          console.log("img:", imgUrl, "item:", item, "includes:", imgUrl.includes(item));
+          if (!imgUrl.includes(item)) {
+            include = false;
+          }
+        })
+        if (!include) continue;
+      }
+
       let exclude = false;
       if (filters.imgExclude.length > 0) {
         filters.imgExclude.forEach((item) => {
@@ -239,7 +253,7 @@ async function downloadImages(imagesUrls: string[], filters: DownloadFilters): P
         }
 
         // Filtrar imágenes por tamaño
-        if ((metadata.width > filters.minImageWidth || metadata.height > filters.minImageHeight)) {
+        if ((metadata.width > filters.minImageWidth && metadata.height > filters.minImageHeight)) {
 
           if (downloadsEnabled) {
             await fs.promises.writeFile(
@@ -275,14 +289,28 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
     const document = dom.window.document;
     const uniqueImgUrls = new Set<string>();
     const imgs = document.querySelectorAll("img");
-    console.log("Imgs:", Array.from(imgs));
-    //console.log("doc:", document.body.innerHTML);
+
     imgs.forEach((img) => {
       const src = img.getAttribute("src");
       if (src) {
         uniqueImgUrls.add(src);
       }
+
+
+      //busca imagenes tambien en srcset
+      const srcSet = img.getAttribute('srcset');
+      if (srcSet) {
+        const srcArray = srcSet.split(",");
+        const srcArray2 = srcArray.map((item) => {
+          return item.trim().split(" ")[0];
+        });
+        console.log("PAGE:", pageUrl)
+        //console.log("SRCSET:", srcArray2);
+
+        srcArray2.forEach(element => uniqueImgUrls.add(element));
+      }
     });
+    console.log("unique: ", uniqueImgUrls)
 
 
     //incluí también imagenes que vienen en links
@@ -296,7 +324,6 @@ async function getImagesUrls(pageUrl: string): Promise<string[] | undefined> {
 
       if (hrefs) {
         if (hrefs.endsWith(".jpg") || hrefs.endsWith(".jpeg") || hrefs.endsWith(".png") || hrefs.endsWith(".gif")) {
-          console.log("href", hrefs);
 
           uniqueImgUrls.add(hrefs);
         }
@@ -328,8 +355,6 @@ async function getImages(pages: Set<string>, filters: DownloadFilters): Promise<
       await wpage.waitForLoadState("domcontentloaded");
 
       const itemsContainer = await wpage.locator('img').all();
-      //console.log("largo:", itemsContainer.length);
-      let result = [];
       for (let item of itemsContainer) {
         if (item) {
           const src = await item.getAttribute('src');

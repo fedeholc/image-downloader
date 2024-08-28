@@ -1,0 +1,176 @@
+{
+  "source": {
+    "id": "s008-crewdson",
+    "url": "https://gagosian.com/artists/gregory-crewdson/",
+    "name": "Gagosian.com"
+  },
+  "album": {
+    "id": "a008-crewdson",
+    "name": "Gregory Crewdson - from Gagosian.com",
+    "description": "Photos by Gregory Crewdson from Gagosian.com",
+    "image": "https://img.artlogic.net/w_1800,h_1800,c_limit/exhibit-e/556d89b2cfaf3421548b4568/8fbc93338e418aee7929c6de778ae01e.jpg",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "works",
+    "imgMustInclude": [
+      "4800",
+      "crewdson",
+      "artists"
+    ],
+    "imgExclude": [
+      "fixmefixmefixme"
+    ],
+    "minImageWidth": 1920,
+    "minImageHeight": 1920
+  },
+  "authorId": "crewdson01",
+  "imgLinks": [
+    "https://gagosian.com/media/images/artists/gregory-crewdson/qRUCY06WRpfE_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/bklpsFAcGKsP_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/F4ajvR665GyW_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/Othl4CS2OSMs_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/CECOCflDt3yH_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/kXMp2Yb6lHGl_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/ecE-yMfXgT1p_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/rbPSM6qCGfZr_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/yn-JsS7aLxWB_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/A8tFnA6-f74M_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/gm8hGWGevlb2_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/zkgHLLKEEJ4v_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/zCmiPREb5qzR_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/d6FQnXjScQiS_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/-f6UlkytLAZd_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/gregory-crewdson/ohrjic89SOTR_4800x4800.jpg"
+  ],
+  "images": [
+    {
+      "id": "a008-crewdson01",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/qRUCY06WRpfE_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson02",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/bklpsFAcGKsP_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson03",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/F4ajvR665GyW_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson04",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/Othl4CS2OSMs_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson05",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/CECOCflDt3yH_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson06",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/kXMp2Yb6lHGl_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson07",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/ecE-yMfXgT1p_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson08",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/rbPSM6qCGfZr_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson09",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/yn-JsS7aLxWB_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson10",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/A8tFnA6-f74M_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson11",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/gm8hGWGevlb2_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson12",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/zkgHLLKEEJ4v_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson13",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/zCmiPREb5qzR_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson14",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/d6FQnXjScQiS_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson15",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/-f6UlkytLAZd_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    },
+    {
+      "id": "a008-crewdson16",
+      "url": "https://gagosian.com/media/images/artists/gregory-crewdson/ohrjic89SOTR_4800x4800.jpg",
+      "description": "",
+      "source": "s008-crewdson",
+      "albumId": "a008-crewdson",
+      "authorId": "crewdson01"
+    }
+  ]
+}

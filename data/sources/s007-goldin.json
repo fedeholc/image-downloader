@@ -1,0 +1,271 @@
+{
+  "source": {
+    "id": "s007-goldin",
+    "url": "https://gagosian.com/artists/nan-goldin/",
+    "name": "Gagosian.com"
+  },
+  "album": {
+    "id": "a007-goldin",
+    "name": "Nan Goldin - from Gagosian.com",
+    "description": "Photos by Nan Goldin from Gagosian.com",
+    "image": "https://gagosian.com/media/images/artists/nan-goldin/_68579USQYgt_300x300.jpg",
+    "dateCreated": ""
+  },
+  "downloadFilters": {
+    "subPageMustInclude": "works",
+    "imgMustInclude": "4800",
+    "imgExclude": [
+      "fixmefixmefixme"
+    ],
+    "minImageWidth": 500,
+    "minImageHeight": 500
+  },
+  "authorId": "goldin01",
+  "imgLinks": [
+    "https://gagosian.com/media/water/rend/2024-07/7wBbCwdf1WNq.max-4800x4800.jpg",
+    "https://gagosian.com/media/images/gallery/news/2024/kunsttage-basel-donald-judd/Z02XIyKg4y26_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/_68579USQYgt_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/0duFY_cf2f4x_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/6o49LnF1i4Y5_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/mYJWdtOOfCSu_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/k3UhuBGGwUj__4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/VSE-EsWqpK5B_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/RGa8oEnbbcAo_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/sq-XACDrRkjX_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/Xf26jb4WrY45_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/yLyWQSayYheW_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/WmeuIgxaTDxx_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/s5-qmjPubrvN_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/4knQf1iFfPDH_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/swRICaXTarzh_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/MCANyAmLdtEP_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/sZNVo17SBQYE_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/b2a6BFSPxwWs_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/ExBWetce0qf-_4800x4800.jpg",
+    "https://gagosian.com/media/images/artists/nan-goldin/uY0VAoiphnm7_4800x4800.jpg",
+    "https://gagosian.com/media/images/exhibitions/2024/nan-goldin-you-never-did-anything-wrong/rxLYfynNJyZh_4800x4800.jpg",
+    "https://gagosian.com/media/images/exhibitions/2024/nan-goldin-sisters-saints-and-sibyls/93SAdbvId7KU_4800x4800.jpg",
+    "https://gagosian.com/media/images/exhibitions/2024/nan-goldin/EtmamcdDJJir_4800x4800.jpg",
+    "https://gagosian.com/media/images/exhibitions/2023/nan-goldin-full-moon/M53ZGsGwctRw_4800x4800.jpg",
+    "https://gagosian.com/media/images/exhibitions/2014/nan-goldin-scopophilia/ouyaliiwz70Y_4800x4800.jpg",
+    "https://gagosian.com/media/images/quarterly/essay-nan-goldin-sisters-saints-sibyls/QjguiydbeQbC_4800x4800.jpg"
+  ],
+  "images": [
+    {
+      "id": "a007-goldin01",
+      "url": "https://gagosian.com/media/water/rend/2024-07/7wBbCwdf1WNq.max-4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin02",
+      "url": "https://gagosian.com/media/images/gallery/news/2024/kunsttage-basel-donald-judd/Z02XIyKg4y26_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin03",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/_68579USQYgt_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin04",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/0duFY_cf2f4x_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin05",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/6o49LnF1i4Y5_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin06",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/mYJWdtOOfCSu_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin07",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/k3UhuBGGwUj__4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin08",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/VSE-EsWqpK5B_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin09",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/RGa8oEnbbcAo_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin10",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/sq-XACDrRkjX_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin11",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/Xf26jb4WrY45_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin12",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/yLyWQSayYheW_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin13",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/WmeuIgxaTDxx_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin14",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/s5-qmjPubrvN_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin15",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/4knQf1iFfPDH_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin16",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/swRICaXTarzh_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin17",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/MCANyAmLdtEP_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin18",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/sZNVo17SBQYE_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin19",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/b2a6BFSPxwWs_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin20",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/ExBWetce0qf-_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin21",
+      "url": "https://gagosian.com/media/images/artists/nan-goldin/uY0VAoiphnm7_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin22",
+      "url": "https://gagosian.com/media/images/exhibitions/2024/nan-goldin-you-never-did-anything-wrong/rxLYfynNJyZh_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin23",
+      "url": "https://gagosian.com/media/images/exhibitions/2024/nan-goldin-sisters-saints-and-sibyls/93SAdbvId7KU_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin24",
+      "url": "https://gagosian.com/media/images/exhibitions/2024/nan-goldin/EtmamcdDJJir_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin25",
+      "url": "https://gagosian.com/media/images/exhibitions/2023/nan-goldin-full-moon/M53ZGsGwctRw_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin26",
+      "url": "https://gagosian.com/media/images/exhibitions/2014/nan-goldin-scopophilia/ouyaliiwz70Y_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    },
+    {
+      "id": "a007-goldin27",
+      "url": "https://gagosian.com/media/images/quarterly/essay-nan-goldin-sisters-saints-sibyls/QjguiydbeQbC_4800x4800.jpg",
+      "description": "",
+      "source": "s007-goldin",
+      "albumId": "a007-goldin",
+      "authorId": "goldin01"
+    }
+  ]
+}
