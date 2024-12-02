@@ -7,5 +7,5 @@ do
   echo "Procesando archivo: $file"
   
   # Ejecuta el comando tsx con el archivo actual (incluyendo el path completo)
-  tsx index.ts "$file" --no-downloads
+  tsx download-source.ts "$file" --no-downloads
 done
